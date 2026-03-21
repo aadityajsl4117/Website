@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mahagadhimai Hospital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="best.css">
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar">
+  <span class="navbar-text">
+    <i class="fas fa-hospital-alt"></i>Mahagadhimai Hospital
+  </span>
+
+  <!-- Desktop links -->
+  <ul class="navlinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#specialist">Specialists</a></li>
+    <li><a href="#service">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#book" class="btn-book">Book Now</a></li>
+    <li>
+      <button class="menuIcon" onclick="openMenu()" title="More">
+        <i class="fas fa-th-large"></i>
+      </button>
+    </li>
+  </ul>
+
+  <!-- Mobile hamburger -->
+  <button class="mobile-btn" id="hamburgerBtn" onclick="toggleMobileNav()">
+    <i class="fas fa-bars" id="hamburgerIcon"></i>
+  </button>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home"       onclick="closeMobileNav()">Home</a>
+  <a href="#about"      onclick="closeMobileNav()">About Us</a>
+  <a href="#specialist" onclick="closeMobileNav()">Our Specialists</a>
+  <a href="#service"    onclick="closeMobileNav()">Services</a>
+  <a href="#gallery"    onclick="closeMobileNav()">Gallery</a>
+  <a href="#contact"    onclick="closeMobileNav()">Contact</a>
+  <a href="#book"       onclick="closeMobileNav()" class="m-book">Book Now</a>
+</div>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-left fade-up">
+      <div class="hero-badge">
+        <i class="fas fa-shield-alt"></i> Trusted Since 2005
+      </div>
+      <h1>Your Health, <span>Our Priority</span></h1>
+      <p>Experience compassionate, cutting-edge medical care designed
+         for your well-being. We are dedicated to every step of your
+         health journey.</p>
+      <div class="hero-buttons">
+        <a href="#book"    class="btn-hero-primary">
+          <i class="fas fa-calendar-check"></i> Book Now
+        </a>
+        <a href="#service" class="btn-hero-outline">Learn More &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-icon"><i class="fas fa-user-md"></i></div>
+      <div>
+        <div class="stat-num">20+</div>
+        <div class="stat-lbl">Specialists</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon"><i class="fas fa-users"></i></div>
+      <div>
+        <div class="stat-num">15K+</div>
+        <div class="stat-lbl">Patients Served</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon"><i class="fas fa-clock"></i></div>
+      <div>
+        <div class="stat-num">24/7</div>
+        <div class="stat-lbl">Emergency Care</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon"><i class="fas fa-award"></i></div>
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-lbl">Awards Won</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== HOME / INTRO ========== -->
+<section id="home" class="section-wrap" style="background:var(--gray);">
+  <div class="container">
+    <div class="home-grid">
+
+      <div class="home-text fade-up">
+        <span class="section-tag">WELCOME</span>
+        <h2 class="section-title">Welcome to<br>Mahagadhimai Hospital</h2>
+        <p class="tagline">
+          24/7 Emergency &bull; Expert Doctors &bull; Modern Facilities
+        </p>
+        <p class="desc">
+          Mahagadhimai Hospital is a modern healthcare center providing
+          quality medical services with advanced technology. Founded in
+          2005, we have served over 15,000 patients across the region.
+        </p>
+        <a href="#book" class="btn-primary-solid">
+          <i class="fas fa-calendar-check"></i> Book an Appointment
+        </a>
+      </div>
+
+      <div class="why-card-home fade-up fade-up-delay-2">
+        <h3><i class="fas fa-check-circle" style="margin-right:8px;"></i>Why Choose Us?</h3>
+        <ul>
+            <!-- Logo genrerate -->
+          <li><i class="fas fa-ambulance"></i>       24/7 Emergency Support</li>
+          <li><i class="fas fa-user-md"></i>         Experienced Specialist Doctors</li>
+          <li><i class="fas fa-hand-holding-heart"></i> Affordable Treatment</li>
+          <li><i class="fas fa-microscope"></i>      Modern Medical Equipment</li>
+          <li><i class="fas fa-shield-virus"></i>    ISO-certified Hygiene Standards</li>
+          <li><i class="fas fa-calendar-alt"></i>    Easy Online Appointments</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="section-wrap" style="background:white;">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag fade-up">ABOUT US</span>
+      <h2 class="section-title fade-up fade-up-delay-1">
+        Welcome to <span style="color:var(--green)">Mahagadhimai Hospital</span>
+      </h2>
+      <p class="section-sub mx-auto fade-up fade-up-delay-2">
+        A modern healthcare center dedicated to providing high-quality
+        medical services with advanced technology and compassionate care
+        since 2005.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="info-card fade-up fade-up-delay-1">
+        <div class="card-icon">🎯</div>
+        <h3>Our Mission</h3>
+        <p>Delivering high-quality, accessible healthcare with integrity,
+           compassion, and innovation for every patient.</p>
+      </div>
+      <div class="info-card fade-up fade-up-delay-2">
+        <div class="card-icon">👁️</div>
+        <h3>Our Vision</h3>
+        <p>To be the most trusted healthcare provider, recognized for
+           clinical excellence and patient-centered care.</p>
+      </div>
+      <div class="info-card fade-up fade-up-delay-3">
+        <div class="card-icon">💎</div>
+        <h3>Our Values</h3>
+        <p>Compassion, Excellence, Integrity, Teamwork — the four pillars
+           guiding every decision we make.</p>
+      </div>
+      <div class="info-card fade-up fade-up-delay-4">
+        <div class="card-icon">🏆</div>
+        <h3>Awards</h3>
+        <p>Recipient of National Healthcare Excellence Award 2023 and
+           Best Patient Care Recognition 2022.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHY CHOOSE US ========== -->
+<section class="choose-section">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag">WHY CHOOSE US</span>
+      <h2 class="section-title">What Sets Us Apart</h2>
+      <p class="section-sub mx-auto">
+        We combine advanced medical technology with genuine human care
+        to deliver outcomes that matter most.
+      </p>
+    </div>
+    <div class="choose-grid">
+      <div class="choose-card fade-up fade-up-delay-1">
+        <div class="cicon">🚑</div>
+        <h3>24/7 Emergency</h3>
+        <p>Round-the-clock emergency services with rapid response teams always ready.</p>
+      </div>
+      <div class="choose-card fade-up fade-up-delay-2">
+        <div class="cicon">👨‍⚕️</div>
+        <h3>Expert Doctors</h3>
+        <p>20+ certified specialists with decades of experience across all medical fields.</p>
+      </div>
+      <div class="choose-card fade-up fade-up-delay-3">
+        <div class="cicon">💊</div>
+        <h3>Affordable Care</h3>
+        <p>Quality treatment at transparent, affordable pricing for every patient.</p>
+      </div>
+      <div class="choose-card fade-up fade-up-delay-4">
+        <div class="cicon">🔬</div>
+        <h3>Modern Equipment</h3>
+        <p>State-of-the-art diagnostic and treatment equipment for precision care.</p>
+      </div>
+      <div class="choose-card fade-up fade-up-delay-1">
+        <div class="cicon">🛡️</div>
+        <h3>Safe &amp; Hygienic</h3>
+        <p>ISO-certified cleanliness ensuring the highest hygiene standards always.</p>
+      </div>
+      <div class="choose-card fade-up fade-up-delay-2">
+        <div class="cicon">📋</div>
+        <h3>Easy Appointments</h3>
+        <p>Simple online booking with minimal waiting time and SMS reminders.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SPECIALISTS ========== -->
+<section id="specialist" class="section-wrap" style="background:var(--gray);">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag fade-up">OUR TEAM</span>
+      <h2 class="section-title fade-up fade-up-delay-1">Our Specialist Doctors</h2>
+      <p class="section-sub mx-auto fade-up fade-up-delay-2">
+        Meet our experienced doctors dedicated to your health and well-being.
+      </p>
+    </div>
+
+    <div class="doctor-grid">
+
+      <div class="doctor-card fade-up fade-up-delay-1">
+        <img src="https://img.freepik.com/free-photo/portrait-male-doctor_23-2148480369.jpg"
+             alt="Dr. Ramesh Kumar">
+        <h4>Dr. Ramesh Kumar</h4>
+        <span class="dept-badge">Cardiologist</span>
+        <p class="about-doc">Expert in heart diseases with 20+ years of experience
+           in cardiac care and surgery.</p>
+        <p class="fee-label"><i class="fas fa-rupee-sign"></i> Consultation Fee: &#8377;800</p>
+        <a href="#book" class="book-btn">Book Appointment</a>
+      </div>
+
+      <div class="doctor-card fade-up fade-up-delay-2">
+        <img src="https://img.freepik.com/free-photo/female-doctor-hospital_23-2148827760.jpg"
+             alt="Dr. Anita Sharma">
+        <h4>Dr. Anita Sharma</h4>
+        <span class="dept-badge">Neurologist</span>
+        <p class="about-doc">Specialized in brain and nervous system treatment
+           with advanced diagnostic care.</p>
+        <p class="fee-label"><i class="fas fa-rupee-sign"></i> Consultation Fee: &#8377;900</p>
+        <a href="#book" class="book-btn">Book Appointment</a>
+      </div>
+
+      <div class="doctor-card fade-up fade-up-delay-3">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFXWbRqxogEyj7DRg86MWdAe8EZudKVKv8RA&s"
+             alt="Dr. Suresh Patel">
+        <h4>Dr. Suresh Patel</h4>
+        <span class="dept-badge">Orthopedic</span>
+        <p class="about-doc">Expert in bone, joint, and spine treatments using
+           the latest surgical techniques.</p>
+        <p class="fee-label"><i class="fas fa-rupee-sign"></i> Consultation Fee: &#8377;700</p>
+        <a href="#book" class="book-btn">Book Appointment</a>
+      </div>
+
+      <div class="doctor-card fade-up fade-up-delay-4">
+        <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlMV9waG90b2dyYXBoeV9vZl9hbl9zb3V0aF9pbmRpYW5fd29tZW5fYXNfYV9kb2N0b19kMzAxMDM3Zi03MDUzLTQxNDAtYmYyZS1lZDFlYWE0YTM3NDRfMS5qcGc.jpg"
+             alt="Dr. Meena Joshi">
+        <h4>Dr. Meena Joshi</h4>
+        <span class="dept-badge">Pediatrician</span>
+        <p class="about-doc">Provides compassionate and expert care for infants
+           and children of all ages.</p>
+        <p class="fee-label"><i class="fas fa-rupee-sign"></i> Consultation Fee: &#8377;600</p>
+        <a href="#book" class="book-btn">Book Appointment</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICES ========== -->
+<section id="service" class="section-wrap" style="background:white;">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag fade-up">WHAT WE OFFER</span>
+      <h2 class="section-title fade-up fade-up-delay-1">Our Medical Services</h2>
+      <p class="section-sub mx-auto fade-up fade-up-delay-2">
+        Comprehensive healthcare services delivered with advanced technology
+        and experienced professionals.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <div class="ser">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSClvRaODsigbX8UkjeXU0ZgXWpeKm6IyMumg&s"
+             alt="Emergency">
+        <div class="ser-body">
+          <h4>24/7 Emergency</h4>
+          <p>Immediate care with advanced emergency facilities and rapid response teams.</p>
+        </div>
+      </div>
+      <div class="ser">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600"
+             alt="Cardiology">
+        <div class="ser-body">
+          <h4>Cardiology</h4>
+          <p>Heart care with modern diagnostic technology and specialist cardiologists.</p>
+        </div>
+      </div>
+      <div class="ser">
+        <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?w=600"
+             alt="Neurology">
+        <div class="ser-body">
+          <h4>Neurology</h4>
+          <p>Advanced brain and nervous system treatment with precision diagnostics.</p>
+        </div>
+      </div>
+      <div class="ser">
+        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600"
+             alt="Pediatrics">
+        <div class="ser-body">
+          <h4>Pediatrics</h4>
+          <p>Specialized and gentle care for infants and children of all ages.</p>
+        </div>
+      </div>
+      <div class="ser">
+        <img src="https://thumbs.dreamstime.com/b/x-ray-leg-knee-blurry-traumatology-orthopedic-surgery-hospital-emergency-operating-room-broken-operation-medical-265253069.jpg"
+             alt="Orthopedics">
+        <div class="ser-body">
+          <h4>Orthopedics</h4>
+          <p>Bone and joint treatment with expert surgeons and full rehabilitation support.</p>
+        </div>
+      </div>
+      <div class="ser">
+        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=600"
+             alt="Diagnostics">
+        <div class="ser-body">
+          <h4>Diagnostics</h4>
+          <p>Accurate lab tests and medical imaging services for precise diagnosis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section id="gallery" class="section-wrap" style="background:var(--gray);">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag fade-up">GALLERY</span>
+      <h2 class="section-title fade-up fade-up-delay-1">Hospital Gallery</h2>
+      <p class="section-sub mx-auto fade-up fade-up-delay-2">
+        A glimpse inside our modern facilities and warm, caring environment.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      <img class="gallery-img fade-up fade-up-delay-1"
+           src="https://www.cmgassets.com/s3fs-public/styles/article_details_tablet_image/public/2024-03/kpj-perdana-specialist-hospital.jpg.webp?itok=WUJhhGM3"
+           alt="Hospital">
+      <img class="gallery-img fade-up fade-up-delay-2"
+           src="https://www.kghospital.com/assets/img/blog/kg-hospital-wins-AHPI-patient-friendly-hospital-award.jpg"
+           alt="Award">
+      <img class="gallery-img fade-up fade-up-delay-3"
+           src="https://www.thumbay.com/news/wp-content/uploads/TH-HYD-Award.jpg"
+           alt="Team">
+      <img class="gallery-img fade-up fade-up-delay-4"
+           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs3HMF7HcNe2uMOiobQTyJU4jva4xBPgJZyw&s"
+           alt="Facility">
+    </div>
+
+    <div class="video-box fade-up">
+      <h3>Hospital Tour Video</h3>
+      <video controls>
+        <source src="hospital-video.mp4" type="video/mp4">
+        <p style="color:var(--text-soft);margin-top:10px;">
+          Video file not found. Please add hospital-video.mp4 to the folder.
+        </p>
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ========== REVIEW + SUBSCRIBE ========== -->
+<section class="review-sub-section">
+  <div class="container">
+    <div class="review-grid">
+
+      <div class="review-card-box fade-up">
+        <p>"Mahagadhimai Hospital completely transformed my healthcare
+           experience. The staff were incredibly attentive and the advanced
+           technology ensured I received the very best possible care."</p>
+        <span>— Rj Roy, Patient</span>
+      </div>
+
+      <div class="subscribe-block fade-up fade-up-delay-2">
+        <span class="section-tag"
+              style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);">
+          NEWSLETTER
+        </span>
+        <h2>Subscribe for Health Tips</h2>
+        <p>Get updates about our medical services and wellness tips
+           from our expert doctors.</p>
+        <div class="subscribe-row">
+          <input type="email" id="subscribeEmail"
+                 placeholder="Enter your email address">
+          <button onclick="handleSubscribe()">Subscribe</button>
+        </div>
+        <p id="subMsg">&#10004; Thank you for subscribing!</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="section-wrap" style="background:white;">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag fade-up">GET IN TOUCH</span>
+      <h2 class="section-title fade-up fade-up-delay-1">Contact Us</h2>
+      <p class="section-sub mx-auto fade-up fade-up-delay-2">
+        We are here to provide you with quality medical care and
+        support around the clock.
+      </p>
+    </div>
+
+    <!-- Contact Info Cards -->
+    <div class="contact-cards">
+      <div class="contact-card fade-up fade-up-delay-1">
+        <div class="cicon phone"><i class="fas fa-phone-alt"></i></div>
+        <h4>24/7 Emergency</h4>
+        <div class="val">+91 44 2000 2020</div>
+        <h4>Appointment Booking</h4>
+        <div class="val">+91 44 2000 2001</div>
+      </div>
+      <div class="contact-card fade-up fade-up-delay-2">
+        <div class="cicon email"><i class="fas fa-envelope"></i></div>
+        <h4>General Enquiry</h4>
+        <div class="val">info@mahagadhimaihospital.com</div>
+        <h4>Doctor Appointment</h4>
+        <div class="val">appointments@mahagadhimaihospital.com</div>
+      </div>
+      <div class="contact-card fade-up fade-up-delay-3">
+        <div class="cicon intl"><i class="fas fa-globe"></i></div>
+        <h4>International Patients</h4>
+        <div class="val">international@mahagadhimaihospital.com</div>
+        <h4>Feedback</h4>
+        <div class="val">feedback@mahagadhimaihospital.com</div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+     <section id="contact-sec">
+
+  <h2 class="contact-title">Send Us a Message</h2>
+
+  <form id="contactForm" class="contact-form">
+
+    <div class="contact-row">
+      <input type="text" id="cName" placeholder="Your Name" required>
+      <input type="email" id="cEmail" placeholder="Email Address" required>
+    </div>
+
+    <input type="text" id="cSubject" placeholder="Subject" required>
+
+    <textarea id="cMessage" placeholder="Your message..."></textarea>
+
+    <button type="submit" class="contact-btn">
+      Send Message ✉
+    </button>
+
+    <p id="cMsg"></p>
+
+  </form>
+
+</section>
+    
+
+<!-- ========== BOOK APPOINTMENT ========== -->
+<section id="book">
+
+  <div class="form-box">
+
+    <form id="form">
+
+      <label>Full Name</label>
+      <input id="name" type="text" placeholder="Your full name" required>
+
+      <label>Email Address</label>
+      <input id="email" type="email" placeholder="you@email.com" required>
+
+      <label>Phone Number</label>
+      <input id="phone" type="tel" placeholder="10-digit mobile number (e.g. 9876543210)" required>
+
+      <label>Select Doctor</label>
+      <select id="doctor" required>
+        <option value="">-- Choose a Doctor --</option>
+        <option>Dr. Ramesh</option>
+        <option>Dr. Anita</option>
+        <option>Dr. Suresh</option>
+      </select>
+
+      <label>Appointment Date</label>
+      <input id="date" type="date" required>
+
+      <label>Message <span>(Optional)</span></label>
+      <textarea id="message" placeholder="Briefly describe your concern..."></textarea>
+
+      <button type="submit" class="btn">Confirm Appointment</button>
+
+      <p id="msg"></p>
+
+    </form>
+
+  </div>
+
+</section>
+<!-- ========== COLLABORATION ========== -->
+<section class="collaboration">
+  <div class="container">
+    <span class="section-tag"
+          style="background:rgba(255,255,255,0.10);color:rgba(255,255,255,0.85);">
+      PARTNERS
+    </span>
+    <h2>Our Hospital Collaborations</h2>
+    <p class="collab-sub">
+      We work with trusted healthcare partners and institutions to provide
+      world-class medical services.
+    </p>
+  </div>
+  <div class="logo-slider">
+    <div class="logo-track">
+      <img src="https://images.seeklogo.com/logo-png/52/1/amrita-hospital-logo-png_seeklogo-520245.png"
+           alt="Amrita Hospital">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtPm6KSa2V4jI3wQlzM6kiWIq1eeYOaxYIWQ&s"
+           alt="Partner 2">
+      <img src="https://image-static.collegedunia.com/public/image/16-18:11-8bc49db91a04609ff734dd620cade12a.jpeg"
+           alt="Partner 3">
+      <img src="https://media.istockphoto.com/id/1624291952/vector/medical-health-logo-design-illustration.jpg?s=612x612&w=0&k=20&c=RdOq1SRcWwS_12_c5Zg2_QOUz1GD-YwGvfRodtOPN5w="
+           alt="Partner 4">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIdSdz_l9F0FhTWLfv8Kr0Z9CkHO3_VCScfQ&s"
+           alt="Partner 5">
+      <!-- Duplicated for seamless loop -->
+      <img src="https://images.seeklogo.com/logo-png/52/1/amrita-hospital-logo-png_seeklogo-520245.png"
+           alt="Amrita Hospital">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtPm6KSa2V4jI3wQlzM6kiWIq1eeYOaxYIWQ&s"
+           alt="Partner 2">
+      <img src="https://image-static.collegedunia.com/public/image/16-18:11-8bc49db91a04609ff734dd620cade12a.jpeg"
+           alt="Partner 3">
+      <img src="https://media.istockphoto.com/id/1624291952/vector/medical-health-logo-design-illustration.jpg?s=612x612&w=0&k=20&c=RdOq1SRcWwS_12_c5Zg2_QOUz1GD-YwGvfRodtOPN5w="
+           alt="Partner 4">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIdSdz_l9F0FhTWLfv8Kr0Z9CkHO3_VCScfQ&s"
+           alt="Partner 5">
+    </div>
+  </div>
+
+</section>
+<footer class="footer">
+
+  <div class="foot-container">
+
+    <!-- Left -->
+    <div class="foot-box">
+      <h2>➕ Mahagadhimai Hospital</h2>
+      <p>
+        Delivering compassionate, high-quality healthcare since 2005.
+        Your health is our greatest commitment.
+      </p>
+
+      <div class="icons">
+        <span>📘</span>
+        <span>🐦</span>
+        <span>📸</span>
+        <span>▶</span>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="foot-box">
+      <h3>ABOUT</h3>
+      <a href="#">Overview</a>
+      <a href="#">Management Team</a>
+      <a href="#">Awards</a>
+      <a href="#">Careers</a>
+    </div>
+
+    <!-- Centers -->
+    <div class="foot-box">
+      <h3>CENTERS OF EXCELLENCE</h3>
+      <a href="#">Cardiac Science</a>
+      <a href="#">Neurology</a>
+      <a href="#">Orthopaedics</a>
+      <a href="#">Oncology</a>
+    </div>
+
+    <!-- Specialities -->
+    <div class="foot-box">
+      <h3>SPECIALITIES</h3>
+      <a href="#">Anesthesiology</a>
+      <a href="#">Critical Care</a>
+      <a href="#">Dermatology</a>
+      <a href="#">ENT</a>
+    </div>
+
+    <!-- Patients -->
+    <div class="foot-box">
+      <h3>PATIENTS & VISITORS</h3>
+      <a href="#">Appointments</a>
+      <a href="#">Admissions</a>
+      <a href="#">Emergency Care</a>
+      <a href="#">Medical Records</a>
+    </div>
+
+  </div>
+
+  <!-- Bottom -->
+  <div class="foot-bottom">
+    <p>© 2026 Mahagadhimai Hospital. All Rights Reserved.</p>
+
+    <div class="links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+
+  <!-- Scroll Button -->
+  <button class="scroll-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    ↑
+  </button>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="best.js"></script>
+
+</body>
+</html>

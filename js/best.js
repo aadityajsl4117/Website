@@ -1,4 +1,4 @@
-/* ==================== MOBILE NAV ==================== */
+
 function toggleMobileNav() {
   var nav = document.getElementById("mobileNav");
   var icon = document.getElementById("hamburgerIcon");
@@ -12,15 +12,14 @@ function closeMobileNav() {
 }
 
 
-/* ==================== SCROLL FADE-IN ==================== */
 function revealOnScroll() {
-  /* fade-up elements */
+  
   document.querySelectorAll(".fade-up").forEach(function(el) {
     if (el.getBoundingClientRect().top < window.innerHeight - 80) {
       el.classList.add("visible");
     }
   });
-  /* service cards — staggered delay */
+  
   document.querySelectorAll(".ser").forEach(function(card, i) {
     if (card.getBoundingClientRect().top < window.innerHeight - 80) {
       setTimeout(function() { card.classList.add("visible"); }, i * 100);
@@ -30,7 +29,7 @@ function revealOnScroll() {
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load",   revealOnScroll);
 
-/* ==================== SUBSCRIBE ==================== */
+
 function handleSubscribe() {
   var email = document.getElementById("subscribeEmail").value.trim();
   var msg   = document.getElementById("subMsg");
@@ -42,7 +41,7 @@ function handleSubscribe() {
   }
 }
 
-/* ==================== VALIDATION HELPERS ==================== */
+
 function isValidEmail(val) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
 }
@@ -61,10 +60,10 @@ function setError(fieldId, errId, hasError) {
     field.classList.remove("error");
     err.classList.remove("show");
   }
-  return !hasError; /* returns true = valid */
+  return !hasError;
 }
 
-/* Clear error as user types */
+
 document.querySelectorAll("input, select, textarea").forEach(function(el) {
   el.addEventListener("input", function() {
     this.classList.remove("error");
@@ -73,7 +72,7 @@ document.querySelectorAll("input, select, textarea").forEach(function(el) {
   });
 });
 
-/* ==================== APPOINTMENT FORM ==================== */
+
 document.getElementById("form").addEventListener("submit", function(e) {
 
   e.preventDefault();
@@ -85,38 +84,38 @@ document.getElementById("form").addEventListener("submit", function(e) {
   let date = document.getElementById("date").value;
   let message = document.getElementById("message").value.trim();
 
-  //  Empty validation
+
   if(name === "" || email === "" || phone === "" || doctor === "" || date === "") {
     alert("⚠ Please fill all required fields!");
     return;
   }
 
-  // Phone validation (10 digits)
+
   if(phone.length !== 10 || isNaN(phone)) {
     alert("⚠ Enter valid 10-digit phone number!");
     return;
   }
 
-  //  Email validation
+
   if(!email.includes("@") || !email.includes(".")) {
     alert("⚠ Enter valid email address!");
     return;
   }
 
-  //Save data
+
   let data = { name, email, phone, doctor, date, message };
   localStorage.setItem("appointment", JSON.stringify(data));
 
-  // Show success message
+
   let msg = document.getElementById("msg");
-  msg.innerText = "✅ Thank you for choosing our team. We will contact you as soon as possible.";
+  msg.innerText = "Thank you for choosing our team. We will contact you as soon as possible.";
   msg.style.display = "block";
 
-  // Reset form
+
   this.reset();
 });
 
-/* ==================== CONTACT FORM ==================== */
+/* =CONTACT FORM = */
 document.getElementById("contactForm").addEventListener("submit", function(e) {
   e.preventDefault();
   var ok = true;
@@ -141,8 +140,14 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
   }
 });
 
-/* ==================== TOUCH ANIMATION (MOBILE) ==================== */
+
 document.querySelectorAll(".ser").forEach(function(card) {
   card.addEventListener("touchstart", function() { this.style.transform = "scale(0.97)"; });
   card.addEventListener("touchend",   function() { this.style.transform = ""; });
+});
+const btn = document.querySelector(".mobile-btn");
+const nav = document.querySelector(".mobile-nav");
+
+btn.addEventListener("click", () => {
+  nav.classList.toggle("open");
 });

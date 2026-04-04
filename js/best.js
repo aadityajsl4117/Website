@@ -1,4 +1,3 @@
-
 function toggleMobileNav() {
   var nav = document.getElementById("mobileNav");
   var icon = document.getElementById("hamburgerIcon");

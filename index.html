@@ -12,12 +12,14 @@
   <link rel="stylesheet" href="css/best.css">
 </head>
 <body>
+<nav class="navbar-custom" role="navigation" aria-label="Main navigation">
+  <div class="navbar-brand-text">
+    <i class="fas fa-hospital-alt"></i>
+    Mahagadhimai Hospital
+  </div>
 
-<nav class="navbar">
-  <span class="navbar-text">
-    <i class="fas fa-hospital-alt"></i>Mahagadhimai Hospital
-  </span>
-  <ul class="navlinks">
+
+  <ul class="nav-links" role="list">
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About Us</a></li>
     <li><a href="#specialist">Specialists</a></li>
@@ -25,26 +27,72 @@
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#book" class="btn-book">Book Now</a></li>
-    <li>
-      <button class="menuIcon" onclick="openMenu()" title="More" style="background:none;border:none;color:white;font-size:1.2rem;cursor:pointer;">
-        <i class="fas fa-th-large"></i>
-      </button>
-    </li>
+  
   </ul>
-  <button class="mobile-btn" id="hamburgerBtn" onclick="toggleMobileNav()">
+
+  <button class="hamburger-btn"
+          id="hamburgerBtn"
+          onclick="toggleMobileNav()"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false">
     <i class="fas fa-bars" id="hamburgerIcon"></i>
   </button>
 </nav>
 
-<div class="mobile-nav" id="mobileNav">
-  <a href="#home"       onclick="closeMobileNav()">Home</a>
-  <a href="#about"      onclick="closeMobileNav()">About Us</a>
-  <a href="#specialist" onclick="closeMobileNav()">Our Specialists</a>
-  <a href="#service"    onclick="closeMobileNav()">Services</a>
-  <a href="#gallery"    onclick="closeMobileNav()">Gallery</a>
-  <a href="#contact"    onclick="closeMobileNav()">Contact</a>
-  <a href="#book"       onclick="closeMobileNav()" class="m-book">Book Now</a>
+<div class="mobile-nav" id="mobileNav" role="navigation" aria-label="Mobile navigation">
+  <a href="#home"       onclick="closeMobileNav()"><i class="fas fa-home" style="margin-right:8px;width:16px"></i>Home</a>
+  <a href="#about"      onclick="closeMobileNav()"><i class="fas fa-info-circle" style="margin-right:8px;width:16px"></i>About Us</a>
+  <a href="#specialist" onclick="closeMobileNav()"><i class="fas fa-user-md" style="margin-right:8px;width:16px"></i>Specialists</a>
+  <a href="#service"    onclick="closeMobileNav()"><i class="fas fa-stethoscope" style="margin-right:8px;width:16px"></i>Services</a>
+  <a href="#gallery"    onclick="closeMobileNav()"><i class="fas fa-images" style="margin-right:8px;width:16px"></i>Gallery</a>
+  <a href="#contact"    onclick="closeMobileNav()"><i class="fas fa-envelope" style="margin-right:8px;width:16px"></i>Contact</a>
+  <a href="#book"       onclick="closeMobileNav()" class="m-book">
+    <i class="fas fa-calendar-check" style="margin-right:8px;width:16px"></i>Book Appointment
+  </a>
 </div>
+
+<div class="nav-overlay" id="navOverlay" onclick="closeMobileNav()"></div>
+
+
+<div class="panel-overlay" id="panelOverlay" onclick="closePanel()"></div>
+<div id="sideMenu" class="menuSide" role="dialog" aria-label="Quick services panel">
+  <button class="side-close" onclick="closePanel()" aria-label="Close panel">
+    <i class="fas fa-times"></i>
+  </button>
+  <ul>
+    <li class="menuItem" onclick="showText(this)">
+      <i class="fas fa-user-plus" style="margin-right:8px;color:var(--green)"></i>
+      Patient Registration <span class="arrow">&#9654;</span>
+      <div class="text">Register patients easily for consultation and manage medical records.</div>
+    </li>
+    <li class="menuItem" onclick="showText(this)">
+      <i class="fas fa-box-open" style="margin-right:8px;color:var(--green)"></i>
+      Health Packages <span class="arrow">&#9654;</span>
+      <div class="text">Affordable health checkup packages for all age groups.</div>
+    </li>
+    <li class="menuItem" onclick="showText(this)">
+      <i class="fas fa-ambulance" style="margin-right:8px;color:var(--green)"></i>
+      Ambulance Services <span class="arrow">&#9654;</span>
+      <div class="text">24/7 emergency ambulance support with trained paramedics.</div>
+    </li>
+    <li class="menuItem" onclick="showText(this)">
+      <i class="fas fa-pills" style="margin-right:8px;color:var(--green)"></i>
+      Pharmacy <span class="arrow">&#9654;</span>
+      <div class="text">In-house pharmacy with genuine medicines and expert staff.</div>
+    </li>
+    <li class="menuItem" onclick="showText(this)">
+      <i class="fas fa-newspaper" style="margin-right:8px;color:var(--green)"></i>
+      News &amp; Events <span class="arrow">&#9654;</span>
+      <div class="text">Latest hospital news and upcoming health events.</div>
+    </li>
+    <li class="menuItem">
+      <i class="fas fa-user-md" style="margin-right:8px;color:var(--green)"></i>
+      Doctor Login <span class="arrow">&#9654;</span>
+    </li>
+  </ul>
+</div>
+
+
 
 <section class="front">
   <div class="front-bg"></div>
@@ -129,12 +177,39 @@
           <li><i class="fas fa-shield-virus"></i>    ISO-certified Hygiene Standards</li>
           <li><i class="fas fa-calendar-alt"></i>    Easy Online Appointments</li>
         </ul>
+        <div class="feature-cards-row fade-up fade-up-delay-2">
+        <div class="glass-card">
+          <div class="icon-box"><i class="fas fa-user-md"></i></div>
+          <div class="card-content">
+            <h4>Expert Consultation</h4>
+            <p>Connect with top-tier specialists daily.</p>
+          </div>
+        </div>
+
+        <div class="glass-card active">
+          <div class="icon-box"><i class="fas fa-ambulance"></i></div>
+          <div class="card-content">
+            <h4>Emergency Response</h4>
+            <p>Ultra-fast ambulance & trauma care.</p>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <div class="icon-box"><i class="fas fa-microscope"></i></div>
+          <div class="card-content">
+            <h4>Modern Diagnostics</h4>
+            <p>Precise results with AI-driven tech.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="about" class="section-wrap" style="background:white;">
+<section id="about" class="sec">
   <div class="container">
     <div class="text-center">
       <span class="section-tag fade-up">ABOUT US</span>
@@ -142,84 +217,54 @@
         Welcome to <span style="color:var(--green)">Mahagadhimai Hospital</span>
       </h2>
       <p class="section-sub mx-auto fade-up fade-up-delay-2">
-        A modern healthcare center dedicated to providing high-quality
-        medical services with advanced technology and compassionate care
-        since 2005.
+        A modern healthcare center dedicated to providing high-quality medical services
+        with advanced technology and compassionate care since 2005.
       </p>
     </div>
     <div class="about-grid">
       <div class="info-card fade-up fade-up-delay-1">
         <div class="card-icon">🎯</div>
         <h3>Our Mission</h3>
-        <p>Delivering high-quality, accessible healthcare with integrity,
-           compassion, and innovation for every patient.</p>
+        <p>Delivering high-quality, accessible healthcare with integrity, compassion, and innovation for every patient.</p>
       </div>
       <div class="info-card fade-up fade-up-delay-2">
         <div class="card-icon">👁️</div>
         <h3>Our Vision</h3>
-        <p>To be the most trusted healthcare provider, recognized for
-           clinical excellence and patient-centered care.</p>
+        <p>To be the most trusted healthcare provider, recognized for clinical excellence and patient-centered care.</p>
       </div>
       <div class="info-card fade-up fade-up-delay-3">
         <div class="card-icon">💎</div>
         <h3>Our Values</h3>
-        <p>Compassion, Excellence, Integrity, Teamwork — the four pillars
-           guiding every decision we make.</p>
+        <p>Compassion, Excellence, Integrity, Teamwork — the four pillars guiding every decision we make.</p>
       </div>
       <div class="info-card fade-up fade-up-delay-4">
         <div class="card-icon">🏆</div>
         <h3>Awards</h3>
-        <p>Recipient of National Healthcare Excellence Award 2023 and
-           Best Patient Care Recognition 2022.</p>
+        <p>National Healthcare Excellence Award 2023 and Best Patient Care Recognition 2022.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="choose-section">
+
+<section class="choose-sec">
   <div class="container">
     <div class="text-center">
       <span class="section-tag">WHY CHOOSE US</span>
       <h2 class="section-title">What Sets Us Apart</h2>
-      <p class="section-sub mx-auto">
-        We combine advanced medical technology with genuine human care
-        to deliver outcomes that matter most.
-      </p>
+      <p class="section-sub mx-auto">Advanced medical technology with genuine human care to deliver outcomes that matter most.</p>
     </div>
     <div class="choose-grid">
-      <div class="choose-card fade-up fade-up-delay-1">
-        <div class="cicon">🚑</div>
-        <h3>24/7 Emergency</h3>
-        <p>Round-the-clock emergency services with rapid response teams always ready.</p>
-      </div>
-      <div class="choose-card fade-up fade-up-delay-2">
-        <div class="cicon">👨‍⚕️</div>
-        <h3>Expert Doctors</h3>
-        <p>20+ certified specialists with decades of experience across all medical fields.</p>
-      </div>
-      <div class="choose-card fade-up fade-up-delay-3">
-        <div class="cicon">💊</div>
-        <h3>Affordable Care</h3>
-        <p>Quality treatment at transparent, affordable pricing for every patient.</p>
-      </div>
-      <div class="choose-card fade-up fade-up-delay-4">
-        <div class="cicon">🔬</div>
-        <h3>Modern Equipment</h3>
-        <p>State-of-the-art diagnostic and treatment equipment for precision care.</p>
-      </div>
-      <div class="choose-card fade-up fade-up-delay-1">
-        <div class="cicon">🛡️</div>
-        <h3>Safe &amp; Hygienic</h3>
-        <p>ISO-certified cleanliness ensuring the highest hygiene standards always.</p>
-      </div>
-      <div class="choose-card fade-up fade-up-delay-2">
-        <div class="cicon">📋</div>
-        <h3>Easy Appointments</h3>
-        <p>Simple online booking with minimal waiting time and SMS reminders.</p>
-      </div>
+      <div class="choose-card fade-up fade-up-delay-1"><div class="ci">🚑</div><h3>24/7 Emergency</h3><p>Round-the-clock emergency services with rapid response teams always ready.</p></div>
+      <div class="choose-card fade-up fade-up-delay-2"><div class="ci">👨‍⚕️</div><h3>Expert Doctors</h3><p>20+ certified specialists with decades of experience across all medical fields.</p></div>
+      <div class="choose-card fade-up fade-up-delay-3"><div class="ci">💊</div><h3>Affordable Care</h3><p>Quality treatment at transparent, affordable pricing for every patient.</p></div>
+      <div class="choose-card fade-up fade-up-delay-4"><div class="ci">🔬</div><h3>Modern Equipment</h3><p>State-of-the-art diagnostic and treatment equipment for precision care.</p></div>
+      <div class="choose-card fade-up fade-up-delay-1"><div class="ci">🛡️</div><h3>Safe &amp; Hygienic</h3><p>ISO-certified cleanliness ensuring the highest hygiene standards always.</p></div>
+      <div class="choose-card fade-up fade-up-delay-2"><div class="ci">📋</div><h3>Easy Appointments</h3><p>Simple online booking with minimal waiting time and SMS reminders.</p></div>
     </div>
   </div>
 </section>
+
 
 <section id="specialist" class="section-wrap" style="background:var(--gray);">
   <div class="container">
@@ -267,71 +312,33 @@
   </div>
 </section>
 
-<section id="service" class="section-wrap" style="background:white;">
+
+
+<section id="service" class="sec">
   <div class="container">
     <div class="text-center">
       <span class="section-tag fade-up">WHAT WE OFFER</span>
       <h2 class="section-title fade-up fade-up-delay-1">Our Medical Services</h2>
-      <p class="section-sub mx-auto fade-up fade-up-delay-2">
-        Comprehensive healthcare services delivered with advanced technology
-        and experienced professionals.
-      </p>
+      <p class="section-sub mx-auto fade-up fade-up-delay-2">Comprehensive healthcare services with advanced technology and experienced professionals.</p>
     </div>
     <div class="services-grid">
-      <div class="ser fade-up fade-up-delay-1">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSClvRaODsigbX8UkjeXU0ZgXWpeKm6IyMumg&s" alt="Emergency">
-        <div class="ser-body">
-          <h4>24/7 Emergency</h4>
-          <p>Immediate care with advanced emergency facilities and rapid response teams.</p>
-        </div>
-      </div>
-      <div class="ser fade-up fade-up-delay-2">
-        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600" alt="Cardiology">
-        <div class="ser-body">
-          <h4>Cardiology</h4>
-          <p>Heart care with modern diagnostic technology and specialist cardiologists.</p>
-        </div>
-      </div>
-      <div class="ser fade-up fade-up-delay-3">
-        <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?w=600" alt="Neurology">
-        <div class="ser-body">
-          <h4>Neurology</h4>
-          <p>Advanced brain and nervous system treatment with precision diagnostics.</p>
-        </div>
-      </div>
-      <div class="ser fade-up fade-up-delay-4">
-        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600" alt="Pediatrics">
-        <div class="ser-body">
-          <h4>Pediatrics</h4>
-          <p>Specialized and gentle care for infants and children of all ages.</p>
-        </div>
-      </div>
-      <div class="ser fade-up fade-up-delay-1">
-        <img src="https://thumbs.dreamstime.com/b/x-ray-leg-knee-blurry-traumatology-orthopedic-surgery-hospital-emergency-operating-room-broken-operation-medical-265253069.jpg" alt="Orthopedics">
-        <div class="ser-body">
-          <h4>Orthopedics</h4>
-          <p>Bone and joint treatment with expert surgeons and full rehabilitation support.</p>
-        </div>
-      </div>
-      <div class="ser fade-up fade-up-delay-2">
-        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=600" alt="Diagnostics">
-        <div class="ser-body">
-          <h4>Diagnostics</h4>
-          <p>Accurate lab tests and medical imaging services for precise diagnosis.</p>
-        </div>
-      </div>
+      <div class="ser"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSClvRaODsigbX8UkjeXU0ZgXWpeKm6IyMumg&s" alt="Emergency"><div class="ser-body"><h4>24/7 Emergency</h4><p>Immediate care with advanced emergency facilities and rapid response teams.</p></div></div>
+      <div class="ser"><img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600" alt="Cardiology"><div class="ser-body"><h4>Cardiology</h4><p>Heart care with modern diagnostic technology and specialist cardiologists.</p></div></div>
+      <div class="ser"><img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?w=600" alt="Neurology"><div class="ser-body"><h4>Neurology</h4><p>Advanced brain and nervous system treatment with precision diagnostics.</p></div></div>
+      <div class="ser"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600" alt="Pediatrics"><div class="ser-body"><h4>Pediatrics</h4><p>Specialized and gentle care for infants and children of all ages.</p></div></div>
+      <div class="ser"><img src="https://thumbs.dreamstime.com/b/x-ray-leg-knee-blurry-traumatology-orthopedic-surgery-hospital-emergency-operating-room-broken-operation-medical-265253069.jpg" alt="Orthopedics"><div class="ser-body"><h4>Orthopedics</h4><p>Bone and joint treatment with expert surgeons and rehabilitation support.</p></div></div>
+      <div class="ser"><img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=600" alt="Diagnostics"><div class="ser-body"><h4>Diagnostics</h4><p>Accurate lab tests and medical imaging for precise diagnosis.</p></div></div>
     </div>
   </div>
 </section>
 
-<section id="gallery" class="section-wrap" style="background:var(--gray);">
+
+<section id="gallery" class="sec-alt">
   <div class="container">
     <div class="text-center">
       <span class="section-tag fade-up">GALLERY</span>
       <h2 class="section-title fade-up fade-up-delay-1">Hospital Gallery</h2>
-      <p class="section-sub mx-auto fade-up fade-up-delay-2">
-        A glimpse inside our modern facilities and warm, caring environment.
-      </p>
+      <p class="section-sub mx-auto fade-up fade-up-delay-2">A glimpse inside our modern facilities and caring environment.</p>
     </div>
     <div class="gallery-grid">
       <img class="gallery-img fade-up fade-up-delay-1" src="https://www.cmgassets.com/s3fs-public/styles/article_details_tablet_image/public/2024-03/kpj-perdana-specialist-hospital.jpg.webp?itok=WUJhhGM3" alt="Hospital">
@@ -341,7 +348,7 @@
     </div>
     <div class="video-box fade-up">
       <h3>Hospital Tour Video</h3>
-       <iframe width="560" height="315"
+     <iframe width="560" height="315"
 src="https://www.youtube.com/embed/tZeR1AGk_Uk?autoplay=1&mute=1"
 allow="autoplay">
     </iframe>
@@ -349,23 +356,19 @@ allow="autoplay">
   </div>
 </section>
 
-<section class="review-sub-section">
+
+<section class="rev-sub-sec">
   <div class="container">
-    <div class="review-grid">
-      <div class="review-card-box fade-up">
-        <p>"Mahagadhimai Hospital completely transformed my healthcare
-           experience. The staff were incredibly attentive and the advanced
-           technology ensured I received the very best possible care."</p>
+    <div class="rev-grid">
+      <div class="rev-card fade-up">
+        <p>"Mahagadhimai Hospital completely transformed my healthcare experience. The staff were incredibly attentive and the technology ensured I received the best possible care."</p>
         <span>— Rj Roy, Patient</span>
       </div>
-      <div class="subscribe-block fade-up fade-up-delay-2">
-        <span class="section-tag" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);">
-          NEWSLETTER
-        </span>
+      <div class="sub-block fade-up fade-up-delay-2">
+        <span class="section-tag" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);">NEWSLETTER</span>
         <h2>Subscribe for Health Tips</h2>
-        <p>Get updates about our medical services and wellness tips
-           from our expert doctors.</p>
-        <div class="subscribe-row">
+        <p>Get updates about medical services and wellness tips from our expert doctors.</p>
+        <div class="sub-row">
           <input type="email" id="subscribeEmail" placeholder="Enter your email address">
           <button onclick="handleSubscribe()">Subscribe</button>
         </div>
@@ -374,6 +377,7 @@ allow="autoplay">
     </div>
   </div>
 </section>
+
 
 <section id="contact" class="section-wrap" style="background:white;">
   <div class="container">
@@ -427,6 +431,7 @@ allow="autoplay">
   </form>
 </section>
 
+
 <section id="book">
   <div class="form-box fade-up">
     <form id="form">
@@ -460,32 +465,29 @@ allow="autoplay">
     </form>
   </div>
 </section>
-<section class="collaboration">
+
+<section class="collab-sec">
   <div class="container">
-    <span class="section-tag" style="background:rgba(255,255,255,0.10);color:rgba(255,255,255,0.85);">
-      PARTNERS
-    </span>
+    <span class="section-tag" style="background:rgba(255,255,255,0.10);color:rgba(255,255,255,0.85);">PARTNERS</span>
     <h2>Our Hospital Collaborations</h2>
-    <p class="collab-sub">
-      We work with trusted healthcare partners and institutions to provide
-      world-class medical services.
-    </p>
+    <p class="collab-sub">We work with trusted healthcare partners to provide world-class medical services.</p>
   </div>
   <div class="logo-slider">
     <div class="logo-track">
-      <img src="https://images.seeklogo.com/logo-png/52/1/amrita-hospital-logo-png_seeklogo-520245.png" alt="Amrita Hospital">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtPm6KSa2V4jI3wQlzM6kiWIq1eeYOaxYIWQ&s" alt="Partner 2">
-      <img src="https://image-static.collegedunia.com/public/image/16-18:11-8bc49db91a04609ff734dd620cade12a.jpeg" alt="Partner 3">
-      <img src="https://media.istockphoto.com/id/1624291952/vector/medical-health-logo-design-illustration.jpg?s=612x612&w=0&k=20&c=RdOq1SRcWwS_12_c5Zg2_QOUz1GD-YwGvfRodtOPN5w=" alt="Partner 4">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIdSdz_l9F0FhTWLfv8Kr0Z9CkHO3_VCScfQ&s" alt="Partner 5">
-      <img src="https://images.seeklogo.com/logo-png/52/1/amrita-hospital-logo-png_seeklogo-520245.png" alt="Amrita Hospital">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtPm6KSa2V4jI3wQlzM6kiWIq1eeYOaxYIWQ&s" alt="Partner 2">
-      <img src="https://image-static.collegedunia.com/public/image/16-18:11-8bc49db91a04609ff734dd620cade12a.jpeg" alt="Partner 3">
-      <img src="https://media.istockphoto.com/id/1624291952/vector/medical-health-logo-design-illustration.jpg?s=612x612&w=0&k=20&c=RdOq1SRcWwS_12_c5Zg2_QOUz1GD-YwGvfRodtOPN5w=" alt="Partner 4">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIdSdz_l9F0FhTWLfv8Kr0Z9CkHO3_VCScfQ&s" alt="Partner 5">
+      <img src="https://images.seeklogo.com/logo-png/52/1/amrita-hospital-logo-png_seeklogo-520245.png" alt="Partner">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtPm6KSa2V4jI3wQlzM6kiWIq1eeYOaxYIWQ&s" alt="Partner">
+      <img src="https://image-static.collegedunia.com/public/image/16-18:11-8bc49db91a04609ff734dd620cade12a.jpeg" alt="Partner">
+      <img src="https://media.istockphoto.com/id/1624291952/vector/medical-health-logo-design-illustration.jpg?s=612x612&w=0&k=20&c=RdOq1SRcWwS_12_c5Zg2_QOUz1GD-YwGvfRodtOPN5w=" alt="Partner">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIdSdz_l9F0FhTWLfv8Kr0Z9CkHO3_VCScfQ&s" alt="Partner">
+      <img src="https://images.seeklogo.com/logo-png/52/1/amrita-hospital-logo-png_seeklogo-520245.png" alt="Partner">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtPm6KSa2V4jI3wQlzM6kiWIq1eeYOaxYIWQ&s" alt="Partner">
+      <img src="https://image-static.collegedunia.com/public/image/16-18:11-8bc49db91a04609ff734dd620cade12a.jpeg" alt="Partner">
+      <img src="https://media.istockphoto.com/id/1624291952/vector/medical-health-logo-design-illustration.jpg?s=612x612&w=0&k=20&c=RdOq1SRcWwS_12_c5Zg2_QOUz1GD-YwGvfRodtOPN5w=" alt="Partner">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIdSdz_l9F0FhTWLfv8Kr0Z9CkHO3_VCScfQ&s" alt="Partner">
     </div>
   </div>
 </section>
+
 
 <footer class="footer">
   <div class="foot-container">
@@ -545,10 +547,12 @@ allow="autoplay">
     ↑
   </button>
 </footer>
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
 
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<script src="js/best.js"></script>
-
+<script src="best.js"></script>
 </body>
-</html>
+<html>

@@ -40,9 +40,7 @@ var mobileNavOpen = false;
     }
   });
 
-  /* =========================================================
-     SIDE PANEL
-  ========================================================= */
+  /*SIDE PANEL*/
   function openPanel() {
     document.getElementById('sideMenu').classList.add('open');
     document.getElementById('panelOverlay').classList.add('active');
@@ -60,9 +58,7 @@ var mobileNavOpen = false;
     item.classList.toggle('open');
   }
 
-  /* =========================================================
-     SCROLL FADE-IN
-  ========================================================= */
+  /*SCROLL FADE-IN*/
   function revealOnScroll() {
     document.querySelectorAll('.fade-up').forEach(function(el) {
       if (el.getBoundingClientRect().top < window.innerHeight - 80) {
@@ -78,9 +74,7 @@ var mobileNavOpen = false;
   window.addEventListener('scroll', revealOnScroll, { passive: true });
   window.addEventListener('load',   revealOnScroll);
 
-  /* =========================================================
-     SCROLL TO TOP BUTTON
-  ========================================================= */
+  /*SCROLL TO TOP BUTTON */
   var scrollBtn = document.getElementById('scrollTopBtn');
   window.addEventListener('scroll', function() {
     if (window.scrollY > 400) {
@@ -93,9 +87,7 @@ var mobileNavOpen = false;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  /* =========================================================
-     SUBSCRIBE
-  ========================================================= */
+
   function handleSubscribe() {
     var email = document.getElementById('subscribeEmail').value.trim();
     var msg   = document.getElementById('subMsg');
@@ -107,76 +99,102 @@ var mobileNavOpen = false;
     }
   }
 
-  /* =========================================================
-     FORM VALIDATION HELPERS
-  ========================================================= */
-  function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
-  function isValidPhone(v) { return /^[6-9]\d{9}$/.test(v.replace(/\s/g, '')); }
+  /*
+     FORM VALIDATION HELPERS*/
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault(); 
 
-  function setError(fieldId, errId, hasError) {
-    var f = document.getElementById(fieldId);
-    var e = document.getElementById(errId);
-    if (hasError) {
-      f.classList.add('error');
-      e.classList.add('show');
-    } else {
-      f.classList.remove('error');
-      e.classList.remove('show');
-    }
-    return !hasError;
+  const name = document.getElementById("cName").value.trim();
+  const email = document.getElementById("cEmail").value.trim();
+  const subject = document.getElementById("cSubject").value.trim();
+  const message = document.getElementById("cMessage").value.trim();
+
+  const msgBox = document.getElementById("cMsg");
+
+
+  if (name === "" || email === "" || subject === "" || message === "") {
+    msgBox.innerText = "⚠ Please fill all fields!";
+    msgBox.style.color = "red";
+    msgBox.style.display = "block";
+    return;
   }
 
-  /* Clear error as user types */
-  document.querySelectorAll('input, select, textarea').forEach(function(el) {
-    el.addEventListener('input', function() {
-      this.classList.remove('error');
-      var errEl = document.getElementById(this.id + 'Err');
-      if (errEl) errEl.classList.remove('show');
-    });
-  });
 
-  /* =========================================================
-     APPOINTMENT FORM
-  ========================================================= */
-  document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var ok = true;
+  msgBox.innerText = "Message sent successfully!";
+  msgBox.style.color = "green";
+  msgBox.style.display = "block";
 
-    var name = document.getElementById('bName').value.trim();
-    if (!setError('bName', 'bNameErr', name.length < 2))   ok = false;
 
-    var email = document.getElementById('bEmail').value.trim();
-    if (!setError('bEmail', 'bEmailErr', !isValidEmail(email))) ok = false;
+  this.reset();
 
-    var phone = document.getElementById('bPhone').value.trim();
-    if (!setError('bPhone', 'bPhoneErr', !isValidPhone(phone))) ok = false;
 
-    var doctor = document.getElementById('bDoctor').value;
-    if (!setError('bDoctor', 'bDoctorErr', !doctor))        ok = false;
+  setTimeout(() => {
+    msgBox.style.display = "none";
+  }, 3000);
+});
+  
+const form = document.getElementById("form");
 
-    var dateVal = document.getElementById('bDate').value;
-    var today   = new Date(); today.setHours(0, 0, 0, 0);
-    if (!setError('bDate', 'bDateErr', !dateVal || new Date(dateVal) <= today)) ok = false;
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
 
-    if (ok) {
-      localStorage.setItem('hospitalAppointment', JSON.stringify({
-        name:    name,
-        email:   email,
-        phone:   phone,
-        doctor:  doctor,
-        date:    dateVal,
-        message: document.getElementById('bMessage').value.trim()
-      }));
-      var s = document.getElementById('bookSuccess');
-      s.classList.add('show');
-      this.reset();
-      setTimeout(function() { s.classList.remove('show'); }, 5000);
-    }
-  });
+  let valid = true;
 
-  /* =========================================================
-     CONTACT FORM
-  ========================================================= */
+  const name = document.getElementById("name");
+  const email = document.getElementById("email");
+  const phone = document.getElementById("phone");
+  const doctor = document.getElementById("doctor");
+  const date = document.getElementById("date");
+
+
+  document.querySelectorAll(".error").forEach(e => e.style.display = "none");
+  document.querySelectorAll("input, select").forEach(i => i.classList.remove("error-border"));
+
+
+  if (name.value.trim().length < 3) {
+    showError(name, "nameErr", "Enter valid name");
+    valid = false;
+  }
+
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+    showError(email, "emailErr", "Enter valid email");
+    valid = false;
+  }
+
+  if (!/^[6-9]\d{9}$/.test(phone.value)) {
+    showError(phone, "phoneErr", "Enter valid 10-digit phone");
+    valid = false;
+  }
+
+  if (doctor.value === "") {
+    showError(doctor, "doctorErr", "Select doctor");
+    valid = false;
+  }
+
+
+  const today = new Date().toISOString().split("T")[0];
+  if (date.value === "" || date.value < today) {
+    showError(date, "dateErr", "Select valid date");
+    valid = false;
+  }
+  if (valid) {
+    const msg = document.getElementById("msg");
+    msg.innerText = "✅ Appointment booked successfully!";
+    msg.style.color = "green";
+    msg.style.display = "block";
+
+    form.reset();
+  }
+});
+
+function showError(input, errId, message) {
+  document.getElementById(errId).innerText = message;
+  document.getElementById(errId).style.display = "block";
+  input.classList.add("error-border");
+}
+  /*CONTACT FORM
+   */
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var ok = true;
@@ -201,9 +219,9 @@ var mobileNavOpen = false;
     }
   });
 
-  /* =========================================================
+  /* 
      TOUCH ANIMATION — service cards on mobile
-  ========================================================= */
+ */
   document.querySelectorAll('.ser').forEach(function(card) {
     card.addEventListener('touchstart', function() {
       this.style.transform = 'scale(0.97)';

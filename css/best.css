@@ -51,11 +51,7 @@
     .fade-up-delay-3        { transition-delay: 0.30s; }
     .fade-up-delay-4        { transition-delay: 0.40s; }
 
-    /* ===================================================
-       NAVBAR — FIXED AT TOP, ALWAYS VISIBLE
-       FIX: changed position:sticky to position:fixed so
-       the navbar stays visible when scrolling ANY section.
-    =================================================== */
+  
     .navbar-custom {
       background: var(--green);
       padding: 0 24px;
@@ -151,11 +147,10 @@
       justify-content: center;
     }
 
-    /* ===================================================
+    /* 
        MOBILE NAV DRAWER
-       FIX: position:fixed so it stays visible when user
-       is scrolled down to any section of the page.
-    =================================================== */
+      
+*/
     .mobile-nav {
       display: none;
       flex-direction: column;
@@ -212,9 +207,9 @@
     }
     .nav-overlay.active { display: block; }
 
-    /* ===================================================
+    /* 
        SIDE PANEL
-    =================================================== */
+ */
     .panel-overlay {
       display: none;
       position: fixed;
@@ -275,7 +270,7 @@
     }
     .menuItem.open .text { display: block; }
 
-    /* ===== HERO ===== */
+    /* HERO  */
    .front {
   position: relative;
   height: 100vh;
@@ -477,7 +472,7 @@
   box-shadow: 0 6px 20px rgba(13,110,79,0.30);
   color: white;
 }
-    /* ===== HOME GRID ===== */
+    /*  HOME GRID */
     .home-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -577,7 +572,7 @@
   font-size: 1.4rem;
 }
 
-    /* ===== ABOUT CARDS ===== */
+    /*ABOUT CARDS  */
     .about-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -620,7 +615,7 @@
     .choose-card h3  { font-size: 1rem; margin-bottom: 7px; }
     .choose-card p   { font-size: 0.85rem; color: rgba(255,255,255,0.76); line-height: 1.53; }
 
-    /* ===== DOCTOR CARDS ===== */
+    /* DOCTOR CARDS */
   .doctor-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -652,6 +647,10 @@
   font-size: 1.05rem;
   color: var(--blue);
   margin-bottom: 5px;
+}
+.doctor-card img {
+  display: block;
+  margin: 0 auto;   /* centers image */
 }
 .dept-badge {
   display: inline-block;
@@ -692,7 +691,7 @@
 }
 
 
-    /* ===== SERVICE CARDS ===== */
+    /*  SERVICE CARDS  */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -720,7 +719,7 @@
     .ser h4    { font-size: 0.98rem; color: var(--blue); margin-bottom: 5px; }
     .ser p     { font-size: 0.84rem; color: var(--text-soft); line-height: 1.6; }
 
-    /* ===== GALLERY ===== */
+    /* GALLERY  */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -740,7 +739,7 @@
     .video-box h3 { font-size: 1.25rem; color: var(--blue); margin-bottom: 14px; }
     .video-box video { border-radius: 14px; max-width: 100%; width: 550px; box-shadow: var(--shadow); }
 
-    /* ===== REVIEW + SUBSCRIBE ===== */
+    /*  REVIEW + SUBSCRIBE  */
     .rev-sub-sec {
       padding: 80px 0;
       background: linear-gradient(135deg, #0d6e4f 0%, #0a3c66 100%);
@@ -793,7 +792,7 @@
     .sub-row button:hover { background: #e09510; }
     #subMsg { color: #a8e6c8; margin-top: 8px; font-size: 0.88rem; display: none; }
 
-    /* ===== CONTACT ===== */
+    /*  CONTACT  */
     .contact-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -900,7 +899,7 @@
   font-weight: bold;
   display: none;
 }
-    /* ===== FORMS ===== */
+    /*  FORMS */
    
     #book {
   width: 100%;

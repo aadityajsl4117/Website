@@ -40,12 +40,12 @@
 </nav>
 
 <div class="mobile-nav" id="mobileNav" role="navigation" aria-label="Mobile navigation">
-  <a href="#home"       onclick="closeMobileNav()"><i class="fas fa-home" style="margin-right:8px;width:16px"></i>Home</a>
-  <a href="#about"      onclick="closeMobileNav()"><i class="fas fa-info-circle" style="margin-right:8px;width:16px"></i>About Us</a>
-  <a href="#specialist" onclick="closeMobileNav()"><i class="fas fa-user-md" style="margin-right:8px;width:16px"></i>Specialists</a>
-  <a href="#service"    onclick="closeMobileNav()"><i class="fas fa-stethoscope" style="margin-right:8px;width:16px"></i>Services</a>
-  <a href="#gallery"    onclick="closeMobileNav()"><i class="fas fa-images" style="margin-right:8px;width:16px"></i>Gallery</a>
-  <a href="#contact"    onclick="closeMobileNav()"><i class="fas fa-envelope" style="margin-right:8px;width:16px"></i>Contact</a>
+  <a href="#home"       onclick="closeMobileNav()"><i class="fas fa-home"></i>Home</a>
+  <a href="#about"      onclick="closeMobileNav()"><i class="fas fa-info-circle"></i>About Us</a>
+  <a href="#specialist" onclick="closeMobileNav()"><i class="fas fa-user-md" ></i>Specialists</a>
+  <a href="#service"    onclick="closeMobileNav()"><i class="fas fa-stethoscope"></i>Services</a>
+  <a href="#gallery"    onclick="closeMobileNav()"><i class="fas fa-images"></i>Gallery</a>
+  <a href="#contact"    onclick="closeMobileNav()"><i class="fas fa-envelope"></i>Contact</a>
   <a href="#book"       onclick="closeMobileNav()" class="m-book">
     <i class="fas fa-calendar-check" style="margin-right:8px;width:16px"></i>Book Appointment
   </a>
@@ -415,56 +415,68 @@ allow="autoplay">
   </div>
 </section>
 
-<section id="contact-sec" class="fade-up">
+<section id="contact-sec">
   <h2 class="contact-title">Send Us a Message</h2>
+
   <form id="contactForm" class="contact-form">
+    
     <div class="contact-row">
       <input type="text" id="cName" placeholder="Your Name" required>
       <input type="email" id="cEmail" placeholder="Email Address" required>
     </div>
+
     <input type="text" id="cSubject" placeholder="Subject" required>
+
     <textarea id="cMessage" placeholder="Your message..."></textarea>
+
     <button type="submit" class="contact-btn">
       Send Message ✉
     </button>
+
     <p id="cMsg"></p>
+
   </form>
 </section>
 
-
 <section id="book">
-  <div class="form-box fade-up">
+  <div class="form-box">
     <form id="form">
 
       <label>Full Name</label>
-      <input id="name" type="text" placeholder="Your full name" required>
+      <input id="name" type="text" placeholder="Your full name">
+      <small id="nameErr" class="error"></small>
 
       <label>Email Address</label>
-      <input id="email" type="email" placeholder="you@email.com" required>
+      <input id="email" type="email" placeholder="you@email.com">
+      <small id="emailErr" class="error"></small>
 
       <label>Phone Number</label>
-      <input id="phone" type="tel" placeholder="10-digit mobile number" required>
+      <input id="phone" type="tel" placeholder="10-digit mobile number">
+      <small id="phoneErr" class="error"></small>
 
       <label>Select Doctor</label>
-      <select id="doctor" required>
+      <select id="doctor">
         <option value="">-- Choose a Doctor --</option>
         <option>Dr. Ramesh</option>
         <option>Dr. Anita</option>
         <option>Dr. Suresh</option>
       </select>
+      <small id="doctorErr" class="error"></small>
 
       <label>Appointment Date</label>
-      <input id="date" type="date" required>
-
-      <label>Message <span>(Optional)</span></label>
-      <textarea id="message" placeholder="Briefly describe your concern..."></textarea>
+      <input id="date" type="date">
+      <small id="dateErr" class="error"></small>
+      <label>Message (Optional)</label>
+<textarea id="message" placeholder="Write your problem or message..."></textarea>
+<small id="messageErr" class="error"></small>
 
       <button type="submit" class="btn">Confirm Appointment</button>
-      <p id="msg"></p>
 
+      <p id="msg"></p>
     </form>
   </div>
 </section>
+
 
 <section class="collab-sec">
   <div class="container">
@@ -544,7 +556,7 @@ allow="autoplay">
   </div>
 
   <button class="scroll-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-    ↑
+
   </button>
 </footer>
 <button class="scroll-top-btn" id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register | Mahagadhimai Hospital</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+    
+    <style>
+        :root {
+            --green: #0d6e4f;
+            --green-light: #1fa67a;
+            --blue: #0a3c66;
+            --text-soft: #64748b;
+            --radius: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #0d6e4f 0%, #0a3c66 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: white;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+
+        .tab-header { display: flex; border-bottom: 1px solid #eee; }
+
+        .tab-btn {
+            flex: 1; padding: 18px; border: none; background: #f8fafc;
+            font-weight: 700; cursor: pointer; color: var(--text-soft);
+            transition: 0.3s;
+        }
+
+        .tab-btn.active { 
+            background: white; 
+            color: var(--green);
+            border-bottom: 3px solid var(--green); 
+        }
+
+        .login-content { padding: 40px; }
+
+        .form-section { display: none; }
+        .form-section.active { display: block; }
+
+        .welcome-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--blue);
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .welcome-sub { color: var(--text-soft); font-size: 0.9rem; margin-bottom: 25px; }
+
+
+        .role-selection {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .role-option input { display: none; }
+        .role-box {
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            color: var(--blue);
+        }
+        .role-option input:checked + .role-box {
+            border-color: var(--green);
+            background: #f0fff4;
+            color: var(--green);
+            box-shadow: 0 0 0 1px var(--green);
+        }
+
+
+        .input-group { margin-bottom: 15px; }
+
+        .input-label { display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; }
+
+        .field-container { position: relative; display: flex; align-items: center; }
+
+        .icon-field { position: absolute; left: 14px; color: var(--blue); font-size: 0.9rem; }
+
+        .field-container input {
+            width: 100%; padding: 12px 45px 12px 40px; /* Extra padding on right for eye icon */
+            border: 1px solid #e2e8f0; border-radius: 10px; outline: none;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .field-container input:focus { border-color: var(--green); }
+
+
+        .toggle-password {
+            position: absolute;
+            right: 14px;
+            color: var(--text-soft);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            padding: 5px;
+        }
+        .toggle-password:hover { color: var(--green); }
+
+        .btn-submit {
+            width: 100%; padding: 14px; background: var(--green);
+            color: white; border: none; border-radius: 30px;
+            font-weight: 700; cursor: pointer; margin-top: 15px;
+        }
+
+
+        .msg-box {
+            display: none;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+        }
+
+        .back-home {
+            display: block; text-align: center; margin-top: 20px;
+            text-decoration: none; color: var(--text-soft); font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-card">
+    <div class="tab-header">
+        <button class="tab-btn active" onclick="showForm('signin')">Sign In</button>
+        <button class="tab-btn" onclick="showForm('register')">Register</button>
+    </div>
+
+    <div class="login-content">
+        <div id="statusMsg" class="msg-box"></div>
+
+        <div id="signin-sec" class="form-section active">
+            <h2 class="welcome-title">Welcome Back</h2>
+            <p class="welcome-sub">Sign in to your hospital account</p>
+            
+            <form id="loginForm">
+                <label class="input-label">Sign in as:</label>
+                <div class="role-selection">
+                    <label class="role-option">
+                        <input type="radio" name="login-role" value="patient" checked>
+                        <div class="role-box"><i class="fas fa-user-injured"></i><br>Patient</div>
+                    </label>
+                    <label class="role-option">
+                        <input type="radio" name="login-role" value="doctor">
+                        <div class="role-box"><i class="fas fa-user-md"></i><br>Doctor</div>
+                    </label>
+                    <label class="role-option">
+                        <input type="radio" name="login-role" value="admin">
+                        <div class="role-box"><i class="fas fa-user-shield"></i><br>Admin</div>
+                    </label>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Email Address</label>
+                    <div class="field-container">
+                        <i class="fas fa-envelope icon-field"></i>
+                        <input type="email" id="lEmail" placeholder="you@email.com" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Password</label>
+                    <div class="field-container">
+                        <i class="fas fa-lock icon-field"></i>
+                        <input type="password" id="lPass" placeholder="••••••••" required>
+                        <i class="fas fa-eye toggle-password" onclick="togglePass('lPass', this)"></i>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">Sign In &rarr;</button>
+            </form>
+        </div>
+
+        <div id="register-sec" class="form-section">
+            <h2 class="welcome-title">Create Account</h2>
+            <p class="welcome-sub">Join the Mahagadhimai Hospital Portal</p>
+            
+            <form id="registerForm">
+                <label class="input-label">Register as:</label>
+                <div class="role-selection">
+                    <label class="role-option">
+                        <input type="radio" name="reg-role" value="patient" checked>
+                        <div class="role-box">Patient</div>
+                    </label>
+                    <label class="role-option">
+                        <input type="radio" name="reg-role" value="doctor">
+                        <div class="role-box">Doctor</div>
+                    </label>
+                    <label class="role-option">
+                        <input type="radio" name="reg-role" value="admin">
+                        <div class="role-box">Admin</div>
+                    </label>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Full Name</label>
+                    <div class="field-container">
+                        <i class="fas fa-user icon-field"></i>
+                        <input type="text" id="rName" placeholder="Full name" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Email Address</label>
+                    <div class="field-container">
+                        <i class="fas fa-envelope icon-field"></i>
+                        <input type="email" id="rEmail" placeholder="you@email.com" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Create Password</label>
+                    <div class="field-container">
+                        <i class="fas fa-lock icon-field"></i>
+                        <input type="password" id="rPass" placeholder="At least 8 characters" required>
+                        <i class="fas fa-eye toggle-password" onclick="togglePass('rPass', this)"></i>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">Register Now</button>
+            </form>
+        </div>
+
+        <a href="bestweb.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+</div>
+
+<script>
+
+    function togglePass(inputId, icon) {
+        const input = document.getElementById(inputId);
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.replace("fa-eye", "fa-eye-slash");
+        } else {
+            input.type = "password";
+            icon.classList.replace("fa-eye-slash", "fa-eye");
+        }
+    }
+
+
+    function showForm(type) {
+        const sections = document.querySelectorAll('.form-section');
+        const tabs = document.querySelectorAll('.tab-btn');
+        const msg = document.getElementById('statusMsg');
+        msg.style.display = 'none'; 
+        sections.forEach(s => s.classList.remove('active'));
+        tabs.forEach(t => t.classList.remove('active'));
+        if(type === 'signin') {
+            document.getElementById('signin-sec').classList.add('active');
+            tabs[0].classList.add('active');
+        } else {
+            document.getElementById('register-sec').classList.add('active');
+            tabs[1].classList.add('active');
+        }
+    }
+
+    // 3. Message Display Function
+    function showStatus(text, isError = false) {
+        const msg = document.getElementById('statusMsg');
+        msg.innerText = text;
+        msg.style.display = 'block';
+        msg.style.background = isError ? "#fff5f5" : "#e8f5f0";
+        msg.style.color = isError ? "#c53030" : "#0d6e4f";
+        msg.style.borderColor = isError ? "#feb2b2" : "#a8e6c8";
+    }
+
+
+    function checkPasswordRules(pass) {
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return regex.test(pass);
+    }
+
+
+    document.getElementById('loginForm').onsubmit = (e) => {
+        e.preventDefault();
+        const role = document.querySelector('input[name="login-role"]:checked').value;
+        showStatus(`Sign in successful as ${role.toUpperCase()}! Redirecting...`);
+    };
+
+    document.getElementById('registerForm').onsubmit = (e) => {
+        e.preventDefault();
+        const pass = document.getElementById('rPass').value;
+        const role = document.querySelector('input[name="reg-role"]:checked').value;
+        
+        if (!checkPasswordRules(pass)) {
+            showStatus("Password weak: 8+ chars, must include Uppercase, Lowercase, Number, and Special Char.", true);
+            return;
+        }
+        
+        showStatus(`Account for ${role.toUpperCase()} created! Switching to Login...`);
+        setTimeout(() => {
+            showForm('signin');
+            document.getElementById('registerForm').reset();
+        }, 2500);
+    };
+</script>
+
+</body>
+</html>

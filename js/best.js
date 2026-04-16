@@ -245,3 +245,46 @@ function rotateCards() {
     currentIndex = (currentIndex + 1) % cards.length;
 
 }
+
+
+//  learn more//
+// Ensure script runs after page is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const learnMoreBtn = document.getElementById('learnMoreBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const overlay = document.getElementById('overlay');
+
+
+    if (learnMoreBtn) {
+        learnMoreBtn.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        });
+    }
+
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto'; 
+        });
+    }
+
+ 
+    overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) {
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // 4. Close if user presses "Escape" key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape" && overlay.classList.contains('active')) {
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+});

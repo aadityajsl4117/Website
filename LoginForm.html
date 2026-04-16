@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Register | Mahagadhimai Hospital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hospital Portal | Mobile Ready</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
     
@@ -14,134 +14,110 @@
             --blue: #0a3c66;
             --text-soft: #64748b;
             --radius: 16px;
+            --bg-gradient: linear-gradient(135deg, #0d6e4f 0%, #0a3c66 100%);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
             font-family: 'DM Sans', sans-serif;
-            background: linear-gradient(135deg, #0d6e4f 0%, #0a3c66 100%);
+            background: var(--bg-gradient);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px; 
         }
 
         .login-card {
             background: white;
             width: 100%;
-            max-width: 480px;
-            border-radius: 20px;
+            max-width: 450px;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: slideUp 0.5s ease-out;
         }
 
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        .tab-header { display: flex; border-bottom: 1px solid #eee; }
-
+        /* Tabs */
+        .tab-header { display: flex; background: #f8fafc; }
         .tab-btn {
-            flex: 1; padding: 18px; border: none; background: #f8fafc;
+            flex: 1; padding: 20px; border: none; background: transparent;
             font-weight: 700; cursor: pointer; color: var(--text-soft);
-            transition: 0.3s;
+            transition: 0.3s; font-size: 1rem;
         }
-
         .tab-btn.active { 
-            background: white; 
-            color: var(--green);
+            background: white; color: var(--green); 
             border-bottom: 3px solid var(--green); 
         }
 
-        .login-content { padding: 40px; }
+        .login-content { padding: 30px 25px; }
 
+        .welcome-title { color: var(--blue); font-size: 1.6rem; margin-bottom: 8px; font-family: 'Playfair Display', serif; }
+        .welcome-sub { color: var(--text-soft); font-size: 0.85rem; margin-bottom: 25px; }
+
+        /* Mobile-Ready Role Selection */
+        .role-selection {
+            display: flex; gap: 8px; margin-bottom: 20px;
+        }
+        .role-option { flex: 1; }
+        .role-option input { display: none; }
+        .role-box {
+            border: 1px solid #e2e8f0; padding: 12px 5px; border-radius: 12px;
+            text-align: center; font-size: 0.8rem; font-weight: 600; cursor: pointer;
+            transition: 0.2s; color: var(--blue); display: block;
+        }
+        .role-box i { font-size: 1.1rem; margin-bottom: 5px; display: block; }
+        .role-option input:checked + .role-box {
+            border-color: var(--green); background: #f0fff4; color: var(--green);
+        }
+
+        /* Forms */
         .form-section { display: none; }
         .form-section.active { display: block; }
 
-        .welcome-title {
-            font-family: 'Playfair Display', serif;
-            color: var(--blue);
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-        }
-
-        .welcome-sub { color: var(--text-soft); font-size: 0.9rem; margin-bottom: 25px; }
-
-
-        .role-selection {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .role-option input { display: none; }
-        .role-box {
-            border: 1px solid #e2e8f0;
-            padding: 10px;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            color: var(--blue);
-        }
-        .role-option input:checked + .role-box {
-            border-color: var(--green);
-            background: #f0fff4;
-            color: var(--green);
-            box-shadow: 0 0 0 1px var(--green);
-        }
-
-
-        .input-group { margin-bottom: 15px; }
-
-        .input-label { display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; }
+        .input-group { margin-bottom: 18px; }
+        .input-label { display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 8px; color: #334155; }
 
         .field-container { position: relative; display: flex; align-items: center; }
-
-        .icon-field { position: absolute; left: 14px; color: var(--blue); font-size: 0.9rem; }
+        .icon-field { position: absolute; left: 16px; color: var(--blue); opacity: 0.7; }
 
         .field-container input {
-            width: 100%; padding: 12px 45px 12px 40px; /* Extra padding on right for eye icon */
-            border: 1px solid #e2e8f0; border-radius: 10px; outline: none;
-            transition: 0.3s;
-            font-size: 0.95rem;
+            width: 100%; padding: 14px 45px 14px 45px;
+            border: 1px solid #e2e8f0; border-radius: 14px; outline: none;
+            font-size: 1rem; transition: 0.3s; background: #fcfdfe;
         }
+        /* Fix for iOS zoom on input focus */
+        @media screen and (max-width: 768px) { .field-container input { font-size: 16px; } }
 
-        .field-container input:focus { border-color: var(--green); }
+        .field-container input:focus { border-color: var(--green); background: white; box-shadow: 0 0 0 4px rgba(13, 110, 79, 0.1); }
 
-
+        /* THE EYE ICON */
         .toggle-password {
-            position: absolute;
-            right: 14px;
-            color: var(--text-soft);
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: 0.2s;
-            padding: 5px;
+            position: absolute; right: 16px; color: var(--text-soft);
+            cursor: pointer; padding: 5px; z-index: 2;
         }
-        .toggle-password:hover { color: var(--green); }
 
         .btn-submit {
-            width: 100%; padding: 14px; background: var(--green);
-            color: white; border: none; border-radius: 30px;
-            font-weight: 700; cursor: pointer; margin-top: 15px;
+            width: 100%; padding: 16px; background: var(--green);
+            color: white; border: none; border-radius: 50px;
+            font-weight: 700; cursor: pointer; margin-top: 10px;
+            font-size: 1rem; box-shadow: 0 4px 12px rgba(13, 110, 79, 0.2);
         }
-
+        .btn-submit:active { transform: scale(0.98); }
 
         .msg-box {
-            display: none;
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 600;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-            border: 1px solid transparent;
+            display: none; padding: 14px; border-radius: 12px;
+            text-align: center; font-weight: 600; margin-bottom: 20px; font-size: 0.9rem;
         }
 
         .back-home {
-            display: block; text-align: center; margin-top: 20px;
+            display: block; text-align: center; margin-top: 25px;
             text-decoration: none; color: var(--text-soft); font-size: 0.85rem;
         }
     </style>
@@ -150,8 +126,8 @@
 
 <div class="login-card">
     <div class="tab-header">
-        <button class="tab-btn active" onclick="showForm('signin')">Sign In</button>
-        <button class="tab-btn" onclick="showForm('register')">Register</button>
+        <button class="tab-btn active" onclick="showForm('signin', this)">Sign In</button>
+        <button class="tab-btn" onclick="showForm('register', this)">Register</button>
     </div>
 
     <div class="login-content">
@@ -159,164 +135,156 @@
 
         <div id="signin-sec" class="form-section active">
             <h2 class="welcome-title">Welcome Back</h2>
-            <p class="welcome-sub">Sign in to your hospital account</p>
+            <p class="welcome-sub">Manage your healthcare dashboard</p>
             
             <form id="loginForm">
-                <label class="input-label">Sign in as:</label>
+                <label class="input-label">Select Role</label>
                 <div class="role-selection">
                     <label class="role-option">
                         <input type="radio" name="login-role" value="patient" checked>
-                        <div class="role-box"><i class="fas fa-user-injured"></i><br>Patient</div>
+                        <div class="role-box"><i class="fas fa-user"></i>Patient</div>
                     </label>
                     <label class="role-option">
                         <input type="radio" name="login-role" value="doctor">
-                        <div class="role-box"><i class="fas fa-user-md"></i><br>Doctor</div>
+                        <div class="role-box"><i class="fas fa-user-md"></i>Doctor</div>
                     </label>
                     <label class="role-option">
                         <input type="radio" name="login-role" value="admin">
-                        <div class="role-box"><i class="fas fa-user-shield"></i><br>Admin</div>
+                        <div class="role-box"><i class="fas fa-user-shield"></i>Admin</div>
                     </label>
                 </div>
 
                 <div class="input-group">
-                    <label class="input-label">Email Address</label>
                     <div class="field-container">
                         <i class="fas fa-envelope icon-field"></i>
-                        <input type="email" id="lEmail" placeholder="you@email.com" required>
+                        <input type="email" id="lEmail" placeholder="Email Address" required>
                     </div>
                 </div>
+
                 <div class="input-group">
-                    <label class="input-label">Password</label>
                     <div class="field-container">
                         <i class="fas fa-lock icon-field"></i>
-                        <input type="password" id="lPass" placeholder="••••••••" required>
-                        <i class="fas fa-eye toggle-password" onclick="togglePass('lPass', this)"></i>
+                        <input type="password" id="lPass" placeholder="Password" required>
+                        <i class="fas fa-eye-slash toggle-password" onclick="togglePass('lPass', this)"></i>
                     </div>
                 </div>
-                <button type="submit" class="btn-submit">Sign In &rarr;</button>
+                <button type="submit" class="btn-submit">Sign In</button>
             </form>
         </div>
 
         <div id="register-sec" class="form-section">
-            <h2 class="welcome-title">Create Account</h2>
-            <p class="welcome-sub">Join the Mahagadhimai Hospital Portal</p>
+            <h2 class="welcome-title">New Account</h2>
+            <p class="welcome-sub">Join Mahagadhimai Hospital Portal</p>
             
             <form id="registerForm">
-                <label class="input-label">Register as:</label>
-                <div class="role-selection">
-                    <label class="role-option">
-                        <input type="radio" name="reg-role" value="patient" checked>
-                        <div class="role-box">Patient</div>
-                    </label>
-                    <label class="role-option">
-                        <input type="radio" name="reg-role" value="doctor">
-                        <div class="role-box">Doctor</div>
-                    </label>
-                    <label class="role-option">
-                        <input type="radio" name="reg-role" value="admin">
-                        <div class="role-box">Admin</div>
-                    </label>
+                <div class="input-group">
+                    <div class="field-container">
+                        <i class="fas fa-user icon-field"></i>
+                        <input type="text" id="rName" placeholder="Full Name" required>
+                    </div>
                 </div>
 
                 <div class="input-group">
-                    <label class="input-label">Full Name</label>
-                    <div class="field-container">
-                        <i class="fas fa-user icon-field"></i>
-                        <input type="text" id="rName" placeholder="Full name" required>
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label class="input-label">Email Address</label>
                     <div class="field-container">
                         <i class="fas fa-envelope icon-field"></i>
-                        <input type="email" id="rEmail" placeholder="you@email.com" required>
+                        <input type="email" id="rEmail" placeholder="Email Address" required>
                     </div>
                 </div>
+
                 <div class="input-group">
-                    <label class="input-label">Create Password</label>
                     <div class="field-container">
                         <i class="fas fa-lock icon-field"></i>
-                        <input type="password" id="rPass" placeholder="At least 8 characters" required>
-                        <i class="fas fa-eye toggle-password" onclick="togglePass('rPass', this)"></i>
+                        <input type="password" id="rPass" placeholder="Create Password" required>
+                        <i class="fas fa-eye-slash toggle-password" onclick="togglePass('rPass', this)"></i>
                     </div>
                 </div>
-                <button type="submit" class="btn-submit">Register Now</button>
+                <button type="submit" class="btn-submit">Create Account</button>
             </form>
         </div>
 
-        <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        <a href="bestweb.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Main Website</a>
     </div>
 </div>
 
 <script>
-
+    // 1. Password Toggle Logic (Eye / Eye-Slash)
     function togglePass(inputId, icon) {
         const input = document.getElementById(inputId);
         if (input.type === "password") {
             input.type = "text";
-            icon.classList.replace("fa-eye", "fa-eye-slash");
+            icon.classList.replace("fa-eye-slash", "fa-eye");
         } else {
             input.type = "password";
-            icon.classList.replace("fa-eye-slash", "fa-eye");
+            icon.classList.replace("fa-eye", "fa-eye-slash");
         }
     }
 
-
-    function showForm(type) {
+    // 2. Tab Switcher
+    function showForm(type, btn) {
         const sections = document.querySelectorAll('.form-section');
         const tabs = document.querySelectorAll('.tab-btn');
-        const msg = document.getElementById('statusMsg');
-        msg.style.display = 'none'; 
+        document.getElementById('statusMsg').style.display = 'none';
+        
         sections.forEach(s => s.classList.remove('active'));
         tabs.forEach(t => t.classList.remove('active'));
-        if(type === 'signin') {
-            document.getElementById('signin-sec').classList.add('active');
-            tabs[0].classList.add('active');
-        } else {
-            document.getElementById('register-sec').classList.add('active');
-            tabs[1].classList.add('active');
-        }
+        
+        btn.classList.add('active');
+        document.getElementById(type + '-sec').classList.add('active');
     }
 
-    // 3. Message Display Function
+    // 3. Validation Logic
+    function checkRules(pass) {
+        return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(pass);
+    }
+
     function showStatus(text, isError = false) {
         const msg = document.getElementById('statusMsg');
         msg.innerText = text;
         msg.style.display = 'block';
-        msg.style.background = isError ? "#fff5f5" : "#e8f5f0";
-        msg.style.color = isError ? "#c53030" : "#0d6e4f";
-        msg.style.borderColor = isError ? "#feb2b2" : "#a8e6c8";
+        msg.style.background = isError ? "#fee2e2" : "#dcfce7";
+        msg.style.color = isError ? "#b91c1c" : "#15803d";
+        msg.style.border = isError ? "1px solid #fecaca" : "1px solid #bbf7d0";
     }
-
-
-    function checkPasswordRules(pass) {
-        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        return regex.test(pass);
-    }
-
 
     document.getElementById('loginForm').onsubmit = (e) => {
         e.preventDefault();
-        const role = document.querySelector('input[name="login-role"]:checked').value;
-        showStatus(`Sign in successful as ${role.toUpperCase()}! Redirecting...`);
+        showStatus("Checking credentials... Please wait.");
     };
 
     document.getElementById('registerForm').onsubmit = (e) => {
         e.preventDefault();
         const pass = document.getElementById('rPass').value;
-        const role = document.querySelector('input[name="reg-role"]:checked').value;
-        
-        if (!checkPasswordRules(pass)) {
-            showStatus("Password weak: 8+ chars, must include Uppercase, Lowercase, Number, and Special Char.", true);
+        if (!checkRules(pass)) {
+            showStatus("Password must be 8+ chars with Uppercase, Number, and Symbol.", true);
             return;
         }
-        
-        showStatus(`Account for ${role.toUpperCase()} created! Switching to Login...`);
-        setTimeout(() => {
-            showForm('signin');
-            document.getElementById('registerForm').reset();
-        }, 2500);
+        showStatus("Account created! Redirecting to login...");
+        setTimeout(() => window.location.reload(), 2000);
     };
+
+
+    // Handle Sign In Logic
+    document.getElementById('loginForm').onsubmit = function(e) {
+    e.preventDefault(); // stop refresh
+
+    const email = document.getElementById('lEmail').value.trim();
+    const password = document.getElementById('lPass').value.trim();
+
+    if (email === "" || password === "") {
+        alert("Please enter email and password");
+    } else {
+
+
+        document.getElementById("statusMsg").innerText = "Login Successful! Redirecting...";
+        document.getElementById("statusMsg").style.display = "block";
+
+
+        setTimeout(() => {
+            window.location.href = "bestweb.html";
+        }, 1200);
+    }
+};
+
 </script>
 
 </body>

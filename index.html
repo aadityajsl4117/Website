@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <link rel="stylesheet" href="css/best.css">
+  <link rel="stylesheet" href="best.css">
 </head>
 <body>
 <nav class="navbar-custom" role="navigation" aria-label="Main navigation">
@@ -27,7 +27,7 @@
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#book" class="btn-book">Book Now</a></li>
-     <li><a href="LoginForm.html" class="nav-link">Login</a></li>
+<li> <a href="LoginForm.html" class="nav-link">Login</a></li>
   
   </ul>
 
@@ -48,8 +48,12 @@
   <a href="#gallery"    onclick="closeMobileNav()"><i class="fas fa-images"></i>Gallery</a>
   <a href="#contact"    onclick="closeMobileNav()"><i class="fas fa-envelope"></i>Contact</a>
   <a href="#book"       onclick="closeMobileNav()" class="m-book">
+ 
     <i class="fas fa-calendar-check" style="margin-right:8px;width:16px"></i>Book Appointment
   </a>
+<a href="LoginForm.html" onclick="closeMobileNav()">
+  <i class="fas fa-sign-in-alt"></i> Login
+</a>
 </div>
 
 <div class="nav-overlay" id="navOverlay" onclick="closeMobileNav()"></div>
@@ -113,7 +117,8 @@
         <a href="#book" class="btn-front-primary">
           <i class="fas fa-calendar-check"></i> Book Now
         </a>
-        <a href="#service" class="btn-front-outline">Learn More &rarr;</a>
+    <a href="javascript:void(0)" class="btn-front-outline" id="learnMoreBtn">Learn More &rarr;</a>
+
       </div>
     </div>
   </div>
@@ -479,6 +484,8 @@ allow="autoplay">
 </section>
 
 
+
+
 <section class="collab-sec">
   <div class="container">
     <span class="section-tag" style="background:rgba(255,255,255,0.10);color:rgba(255,255,255,0.85);">PARTNERS</span>
@@ -557,15 +564,71 @@ allow="autoplay">
   </div>
 
   <button class="scroll-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-
+    ↑
   </button>
 </footer>
 <button class="scroll-top-btn" id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">
   <i class="fas fa-arrow-up"></i>
 </button>
 
+
+<!-- learn more -->
+<div class="overlay" id="overlay">
+        <div class="details-container">
+            <span class="close-btn" id="closeBtn">&times;</span>
+            
+            <div class="section-header">
+                <h2>Hospital Excellence</h2>
+                <p>Your health, our priority.</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Our Founder</h3>
+                    <p><strong>Dr. Fillospher Nepal</strong></p>
+                    <p>Dedicated to providing accessible healthcare with 20+ years of experience.</p>
+                </div>
+
+                <div class="info-card emergency-box">
+                    <i class="fas fa-ambulance"></i>
+                    <h3>Ambulance</h3>
+                    <p><strong>24/7 Service Available</strong></p>
+                    <p style="color: var(--danger); font-weight: bold;">Call: 102 / +977-098890800</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Opening Hours</h3>
+                    <p>General OPD: 8AM - 8PM</p>
+                    <p><strong>Emergency: 24/7</strong></p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-procedures"></i>
+                    <h3>Bed Availability</h3>
+                    <p>Total Beds: 150</p>
+                    <p>ICU/Ventilators: 15</p>
+                </div>
+            </div>
+
+            <h3 class="gallery-title">Hospital Gallery</h3>
+            <div class="hospital-gallery">
+                <img src="https://t3.ftcdn.net/jpg/06/28/64/22/240_F_628642260_f1O8YpXQoAu3hJ05iNy0VaJa5DaILIA3.jpg" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=300" class="gallery-img">
+                <img src="https://as1.ftcdn.net/v2/jpg/18/18/63/26/1000_F_1818632653_Tv9bMkLpUSi48tEskgFhh9j4znYMEiCa.jpg" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=300" class="gallery-img">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/best.js"></script>
+<script src="best.js"></script>
 </body>
 <html>

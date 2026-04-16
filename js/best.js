@@ -180,7 +180,7 @@ form.addEventListener("submit", function(e) {
   }
   if (valid) {
     const msg = document.getElementById("msg");
-    msg.innerText = "✅ Appointment booked successfully!";
+    msg.innerText = "✅ Thank you for booking your appointment";
     msg.style.color = "green";
     msg.style.display = "block";
 

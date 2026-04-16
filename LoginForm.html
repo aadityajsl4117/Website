@@ -1,9 +1,13 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Hospital Portal | Mobile Ready</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
     
@@ -61,10 +65,8 @@
         .welcome-title { color: var(--blue); font-size: 1.6rem; margin-bottom: 8px; font-family: 'Playfair Display', serif; }
         .welcome-sub { color: var(--text-soft); font-size: 0.85rem; margin-bottom: 25px; }
 
-        /* Mobile-Ready Role Selection */
-        .role-selection {
-            display: flex; gap: 8px; margin-bottom: 20px;
-        }
+        /* Role Selection */
+        .role-selection { display: flex; gap: 8px; margin-bottom: 20px; }
         .role-option { flex: 1; }
         .role-option input { display: none; }
         .role-box {
@@ -88,16 +90,14 @@
         .icon-field { position: absolute; left: 16px; color: var(--blue); opacity: 0.7; }
 
         .field-container input {
-            width: 100%; padding: 14px 45px 14px 45px;
+            width: 100%; padding: 14px 45px;
             border: 1px solid #e2e8f0; border-radius: 14px; outline: none;
             font-size: 1rem; transition: 0.3s; background: #fcfdfe;
         }
-        /* Fix for iOS zoom on input focus */
         @media screen and (max-width: 768px) { .field-container input { font-size: 16px; } }
 
         .field-container input:focus { border-color: var(--green); background: white; box-shadow: 0 0 0 4px rgba(13, 110, 79, 0.1); }
 
-        /* THE EYE ICON */
         .toggle-password {
             position: absolute; right: 16px; color: var(--text-soft);
             cursor: pointer; padding: 5px; z-index: 2;
@@ -107,7 +107,7 @@
             width: 100%; padding: 16px; background: var(--green);
             color: white; border: none; border-radius: 50px;
             font-weight: 700; cursor: pointer; margin-top: 10px;
-            font-size: 1rem; box-shadow: 0 4px 12px rgba(13, 110, 79, 0.2);
+            font-size: 1rem; transition: 0.2s;
         }
         .btn-submit:active { transform: scale(0.98); }
 
@@ -126,8 +126,8 @@
 
 <div class="login-card">
     <div class="tab-header">
-        <button class="tab-btn active" onclick="showForm('signin', this)">Sign In</button>
-        <button class="tab-btn" onclick="showForm('register', this)">Register</button>
+        <button id="tab-signin" class="tab-btn active" onclick="showForm('signin')">Sign In</button>
+        <button id="tab-register" class="tab-btn" onclick="showForm('register')">Register</button>
     </div>
 
     <div class="login-content">
@@ -207,7 +207,7 @@
 </div>
 
 <script>
-    // 1. Password Toggle Logic (Eye / Eye-Slash)
+    // 1. Password Visibility
     function togglePass(inputId, icon) {
         const input = document.getElementById(inputId);
         if (input.type === "password") {
@@ -219,24 +219,21 @@
         }
     }
 
-    // 2. Tab Switcher
-    function showForm(type, btn) {
-        const sections = document.querySelectorAll('.form-section');
-        const tabs = document.querySelectorAll('.tab-btn');
+    // 2. Navigation Logic
+    function showForm(type) {
+        // Reset status message on switch
         document.getElementById('statusMsg').style.display = 'none';
         
-        sections.forEach(s => s.classList.remove('active'));
-        tabs.forEach(t => t.classList.remove('active'));
-        
-        btn.classList.add('active');
+        // Hide all sections, show selected
+        document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
         document.getElementById(type + '-sec').classList.add('active');
+
+        // Update Tab Active State
+        document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+        document.getElementById('tab-' + type).classList.add('active');
     }
 
-    // 3. Validation Logic
-    function checkRules(pass) {
-        return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(pass);
-    }
-
+    // 3. Status Message Utility
     function showStatus(text, isError = false) {
         const msg = document.getElementById('statusMsg');
         msg.innerText = text;
@@ -246,45 +243,33 @@
         msg.style.border = isError ? "1px solid #fecaca" : "1px solid #bbf7d0";
     }
 
-    document.getElementById('loginForm').onsubmit = (e) => {
+    // 4. Form Submissions (Clean & Corrected)
+    document.getElementById('loginForm').onsubmit = function(e) {
         e.preventDefault();
-        showStatus("Checking credentials... Please wait.");
+        const email = document.getElementById('lEmail').value.trim();
+        const pass = document.getElementById('lPass').value.trim();
+
+        if (email && pass) {
+            showStatus("Success! Redirecting to dashboard...");
+            setTimeout(() => { window.location.href = "bestweb.html"; }, 1200);
+        } else {
+            showStatus("Please fill all fields.", true);
+        }
     };
 
-    document.getElementById('registerForm').onsubmit = (e) => {
+    document.getElementById('registerForm').onsubmit = function(e) {
         e.preventDefault();
         const pass = document.getElementById('rPass').value;
-        if (!checkRules(pass)) {
+        const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        if (!passRegex.test(pass)) {
             showStatus("Password must be 8+ chars with Uppercase, Number, and Symbol.", true);
             return;
         }
-        showStatus("Account created! Redirecting to login...");
-        setTimeout(() => window.location.reload(), 2000);
+
+        showStatus("Account created! Please Sign In.");
+        setTimeout(() => { showForm('signin'); }, 2000);
     };
-
-
-    // Handle Sign In Logic
-    document.getElementById('loginForm').onsubmit = function(e) {
-    e.preventDefault(); // stop refresh
-
-    const email = document.getElementById('lEmail').value.trim();
-    const password = document.getElementById('lPass').value.trim();
-
-    if (email === "" || password === "") {
-        alert("Please enter email and password");
-    } else {
-
-
-        document.getElementById("statusMsg").innerText = "Login Successful! Redirecting...";
-        document.getElementById("statusMsg").style.display = "block";
-
-
-        setTimeout(() => {
-            window.location.href = "bestweb.html";
-        }, 1200);
-    }
-};
-
 </script>
 
 </body>

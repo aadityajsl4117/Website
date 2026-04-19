@@ -204,7 +204,8 @@
 </div>
 
 <script>
-    // 1. Password Visibility
+
+    
     function togglePass(inputId, icon) {
         const input = document.getElementById(inputId);
         if (input.type === "password") {
@@ -216,21 +217,21 @@
         }
     }
 
-    // 2. Navigation Logic
+
     function showForm(type) {
-        // Reset status message on switch
+
         document.getElementById('statusMsg').style.display = 'none';
         
-        // Hide all sections, show selected
+
         document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
         document.getElementById(type + '-sec').classList.add('active');
 
-        // Update Tab Active State
+        
         document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
         document.getElementById('tab-' + type).classList.add('active');
     }
 
-    // 3. Status Message Utility
+
     function showStatus(text, isError = false) {
         const msg = document.getElementById('statusMsg');
         msg.innerText = text;
@@ -240,7 +241,9 @@
         msg.style.border = isError ? "1px solid #fecaca" : "1px solid #bbf7d0";
     }
 
-    // 4. Form Submissions (Clean & Corrected)
+
+    
+
     document.getElementById('loginForm').onsubmit = function(e) {
         e.preventDefault();
         const email = document.getElementById('lEmail').value.trim();

@@ -96,7 +96,7 @@ section, footer {
 
 
 
-
+/*nav bar code */
 .navbar-custom {
   background: var(--green);
   padding: 0 24px;
@@ -357,7 +357,7 @@ section, footer {
   display: block; 
 }
 
-/* HERO */
+/* front page */
 .front {
   position: relative;
   height: 100vh;
@@ -838,6 +838,9 @@ section, footer {
   color: white;
 }
 
+
+
+
 /*  SERVICE CARDS  */
 .services-grid {
   display: grid;
@@ -872,6 +875,10 @@ section, footer {
 .ser-body { padding: 16px 18px; }
 .ser h4 { font-size: 0.98rem; color: var(--blue); margin-bottom: 5px; }
 .ser p { font-size: 0.84rem; color: var(--text-soft); line-height: 1.6; }
+
+
+
+
 
 /* GALLERY  */
 .gallery-grid {
@@ -991,7 +998,11 @@ section, footer {
   display: none; 
 }
 
-/* ===== CONTACT ===== */
+
+
+
+
+/* CONTACT  */
  .contact-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -1078,6 +1089,8 @@ section, footer {
   transition: 0.3s;
 }
 
+
+
 /* Focus effect */
 .contact-form input:focus,
 .contact-form textarea:focus {
@@ -1095,6 +1108,8 @@ section, footer {
   margin-bottom: 20px;
 }
 
+
+
 /* Button */
 .contact-btn {
   width: 100%;
@@ -1111,6 +1126,8 @@ section, footer {
 .contact-btn:hover {
   background: #1e4fa3;
 }
+
+
 
 /* Message */
 #cMsg {
@@ -1131,12 +1148,11 @@ section, footer {
 
 
 
-/* ===== FORMS ===== */
+
 
 
 /* FORM BOX */
-
-/* ===== BOOK SECTION BACKGROUND ===== */
+/* BOOK */
 #book {
   width: 100%;
   min-height: 100vh;
@@ -1148,7 +1164,7 @@ section, footer {
   padding: 40px 20px;
 }
 
-/* ===== FORM BOX ===== */
+/* FORM BOX */
 .form-box {
   width: 100%;
   max-width: 450px;
@@ -1160,7 +1176,7 @@ section, footer {
   animation: fadeIn 0.8s ease;
 }
 
-/* ===== FORM LABEL ===== */
+
 form label {
   display: block;
   margin-top: 12px;
@@ -1168,7 +1184,7 @@ form label {
   color: #333;
 }
 
-/* ===== INPUTS ===== */
+/*INPUTS  */
 form input,
 form select,
 form textarea {
@@ -1182,7 +1198,6 @@ form textarea {
   outline: none;
 }
 
-/* Focus Effect */
 form input:focus,
 form select:focus,
 form textarea:focus {
@@ -1190,7 +1205,7 @@ form textarea:focus {
   box-shadow: 0 0 6px rgba(0,128,0,0.3);
 }
 
-/* ===== BUTTON ===== */
+/*  BUTTON  */
 .btn {
   width: 100%;
   margin-top: 20px;
@@ -1220,7 +1235,7 @@ form textarea:focus {
   border-radius: 8px;
 }
 
-/* ===== ERROR TEXT ===== */
+/* ERROR TEXT */
 .error {
   color: red;
   font-size: 12px;
@@ -1234,12 +1249,12 @@ form textarea:focus {
   background: #ffecec;
 }
 
-/* ===== SUCCESS INPUT ===== */
+ 
 .success-border {
   border: 2px solid green !important;
 }
 
-/* ===== ANIMATION ===== */
+/*ANIMATION */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -1250,7 +1265,8 @@ form textarea:focus {
     transform: translateY(0);
   }
 }
-/* TEXTAREA STYLE */
+
+
 form textarea {
   width: 100%;
   min-height: 120px;
@@ -1264,19 +1280,21 @@ form textarea {
   transition: 0.3s;
 }
 
-/* FOCUS EFFECT */
+
 form textarea:focus {
   border-color: green;
   box-shadow: 0 0 6px rgba(0,128,0,0.3);
 }
 
-/* ERROR STATE */
+
 textarea.error-border {
   border: 2px solid red !important;
   background: #ffecec;
 }
 
-/* ===== COLLABORATION ===== */
+
+
+/* COLLABORATION */
 .collab-sec {
   background: #0b0d10;
   color: white;
@@ -1315,7 +1333,7 @@ textarea.error-border {
   to { transform: translateX(-50%); }
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER  */
 footer {
   background: #fdf2f8; 
   width: 100vw;
@@ -1392,7 +1410,7 @@ footer {
   z-index: 10;
 }
 
-/* ===== SCROLL TO TOP ===== */
+/*SCROLL TO TOP*/
 .scroll-top-btn {
   position: fixed;
   bottom: 24px;
@@ -1435,7 +1453,7 @@ footer {
   .glass-card { flex: 1 1 calc(50% - 20px); }
 }
 
-/*========= */
+/*    */
 @media (max-width: 768px) {
   /* NAVBAR */
   .nav-links { display: none; }
@@ -1469,19 +1487,19 @@ footer {
   .section-title { font-size: 1.55rem; }
 }
 
-/* =======================================================
+/* 
    RESPONSIVE — SMALL MOBILE (max-width: 480px)
-======================================================= */
+ */
 @media (max-width: 480px) {
-  /* NAVBAR */
+
   .navbar-custom { padding: 0 14px; height: 58px; }
   :root { --nav-height: 58px; }
   .navbar-brand-text { font-size: 0.92rem; }
 
-  /* HERO buttons stack */
+  
   .front-buttons { flex-direction: column; align-items: stretch; }
 
-  /* STATS — one per row */
+
   .stat-item {
     flex: 1 1 100%;
     border-right: none;
@@ -1489,17 +1507,17 @@ footer {
   }
   .stat-item:last-child { border-bottom: none; }
 
-  /* GALLERY single column */
+
   .gallery-grid { grid-template-columns: 1fr; }
 
-  /* SIDE PANEL — full width */
+
   .menuSide { width: 100%; left: -100%; }
   .menuSide.open { left: 0; }
 
-  /* COLLAB logos */
+
   .logo-track img { width: 110px; height: 70px; padding: 10px; }
   
-  /* GLASS CARD */
+
   .glass-card { flex: 1 1 100%; }
   .home-text { text-align: center; }
 }
@@ -1527,6 +1545,7 @@ footer {
 
 
 
+
 /* learn more css */
 .overlay.active {
     opacity: 1;
@@ -1550,6 +1569,7 @@ footer {
 .overlay.active .details-container {
     transform: scale(1) translateY(0);
 }
+
 
 .close-btn {
     position: absolute;
@@ -1607,7 +1627,7 @@ footer {
 
 .gallery-img:hover { transform: scale(1.05); }
 
-/* Mobile optimization */
+/* Mobile sizee */
 @media (max-width: 600px) {
     .details-container { padding: 25px; }
     .info-grid { grid-template-columns: 1fr; }

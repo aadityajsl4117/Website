@@ -40,6 +40,8 @@ var mobileNavOpen = false;
     }
   });
 
+
+
   /*SIDE PANEL*/
   function openPanel() {
     document.getElementById('sideMenu').classList.add('open');
@@ -98,6 +100,8 @@ var mobileNavOpen = false;
       alert('Please enter a valid email address.');
     }
   }
+
+
 
   /*
      FORM VALIDATION HELPERS*/
@@ -180,7 +184,7 @@ form.addEventListener("submit", function(e) {
   }
   if (valid) {
     const msg = document.getElementById("msg");
-    msg.innerText = "✅ Thank you for booking your appointment";
+    msg.innerText = " Thank you for booking your appointment";
     msg.style.color = "green";
     msg.style.display = "block";
 
@@ -193,6 +197,9 @@ function showError(input, errId, message) {
   document.getElementById(errId).style.display = "block";
   input.classList.add("error-border");
 }
+
+
+
   /*CONTACT FORM
    */
   document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -218,6 +225,9 @@ function showError(input, errId, message) {
       setTimeout(function() { s.classList.remove('show'); }, 5000);
     }
   });
+
+
+
 
   /* 
      TOUCH ANIMATION — service cards on mobile
@@ -245,6 +255,9 @@ function rotateCards() {
     currentIndex = (currentIndex + 1) % cards.length;
 
 }
+
+
+
 
 
 //  learn more//

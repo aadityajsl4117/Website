@@ -1,4 +1,5 @@
-  function togglePass(inputId, icon) {
+
+    function togglePass(inputId, icon) {
         const input = document.getElementById(inputId);
         if (input.type === "password") {
             input.type = "text";
@@ -9,23 +10,20 @@
         }
     }
 
-    // 2. Tab Switcher
-    function showForm(type, btn) {
-        const sections = document.querySelectorAll('.form-section');
-        const tabs = document.querySelectorAll('.tab-btn');
+
+    function showForm(type) {
+
         document.getElementById('statusMsg').style.display = 'none';
         
-        sections.forEach(s => s.classList.remove('active'));
-        tabs.forEach(t => t.classList.remove('active'));
-        
-        btn.classList.add('active');
+
+        document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
         document.getElementById(type + '-sec').classList.add('active');
+
+        
+        document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+        document.getElementById('tab-' + type).classList.add('active');
     }
 
-    // 3. Validation Logic
-    function checkRules(pass) {
-        return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(pass);
-    }
 
     function showStatus(text, isError = false) {
         const msg = document.getElementById('statusMsg');
@@ -36,41 +34,32 @@
         msg.style.border = isError ? "1px solid #fecaca" : "1px solid #bbf7d0";
     }
 
-    document.getElementById('loginForm').onsubmit = (e) => {
+
+    
+
+    document.getElementById('loginForm').onsubmit = function(e) {
         e.preventDefault();
-        showStatus("Checking credentials... Please wait.");
+        const email = document.getElementById('lEmail').value.trim();
+        const pass = document.getElementById('lPass').value.trim();
+
+        if (email && pass) {
+            showStatus("Success! Redirecting to dashboard...");
+            setTimeout(() => { window.location.href = "index.html"; }, 1200);
+        } else {
+            showStatus("Please fill all fields.", true);
+        }
     };
 
-    document.getElementById('registerForm').onsubmit = (e) => {
+    document.getElementById('registerForm').onsubmit = function(e) {
         e.preventDefault();
         const pass = document.getElementById('rPass').value;
-        if (!checkRules(pass)) {
+        const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        if (!passRegex.test(pass)) {
             showStatus("Password must be 8+ chars with Uppercase, Number, and Symbol.", true);
             return;
         }
-        showStatus("Account created! Redirecting to login...");
-        setTimeout(() => window.location.reload(), 2000);
-    };
 
-
-    
-    document.getElementById('loginForm').onsubmit = function(e) {
-    e.preventDefault(); 
-
-    const email = document.getElementById('lEmail').value.trim();
-    const password = document.getElementById('lPass').value.trim();
-
-    if (email === "" || password === "") {
-        alert("Please enter email and password");
-    } else {
-
-
-        document.getElementById("statusMsg").innerText = "Login Successful! Redirecting...";
-        document.getElementById("statusMsg").style.display = "block";
-
-
-        setTimeout(() => {
-            window.location.href = "index.html";
-        }, 1200);
+        showStatus("Account created! Please Sign In.");
+        setTimeout(() => { showForm('signin'); }, 2000);
     }
-};
